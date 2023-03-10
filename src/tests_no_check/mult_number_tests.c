@@ -19,7 +19,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
 
         m.matrix[0][0] = 1.23;
 
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, number, &actual_result);
 
         matrix_t expected_result;
@@ -27,7 +27,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         expected_result.matrix[0][0] = 2.46;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -50,7 +50,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
 
         m.matrix[0][0] = 1.23;
 
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, number, &actual_result);
 
         matrix_t expected_result;
@@ -58,7 +58,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         expected_result.matrix[0][0] = 0.123;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -84,7 +84,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         m.matrix[1][0] = 30.5;
         m.matrix[1][1] = 40.5;
 
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, number, &actual_result);
 
         matrix_t expected_result;
@@ -95,7 +95,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         expected_result.matrix[1][1] = 4.05;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -121,7 +121,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         m.matrix[1][0] = 30.5;
         m.matrix[1][1] = 40.5;
 
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, number, &actual_result);
 
         matrix_t expected_result;
@@ -132,7 +132,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         expected_result.matrix[1][1] = 0.0;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {

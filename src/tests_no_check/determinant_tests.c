@@ -17,14 +17,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
         s21_create_matrix(1, 1, &m);
         m.matrix[0][0] = 1.23;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = 1.23;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -44,14 +44,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
         m.matrix[1][0] = 2.0;
         m.matrix[1][1] = 1.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = 0.0;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -77,14 +77,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
         m.matrix[2][1] = 8.0;
         m.matrix[2][2] = 9.0;
    
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = 0.0;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -105,14 +105,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
         m.matrix[1][0] = 3.0;
         m.matrix[1][1] = 7.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = 51.0;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -146,14 +146,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
         m.matrix[3][3] = 16.5;
         
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = 0.0;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -195,14 +195,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
         m.matrix[4][3] = 24.24;
         m.matrix[4][4] = 25.25;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = 0.0;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -243,14 +243,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
         m.matrix[4][3] = 79.0;
         m.matrix[4][4] = 83.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = -2256.0;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -266,14 +266,14 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
 
         s21_create_matrix(2, 3, &m);
         
-        const int expected_code = CALCULATION_ERROR;
+        const int expected_code = ERROR_CALCULATION_ERROR;
         double actual_result = 0.0;
         const int actual_code = algorithm(&m, &actual_result);
 
         const double expected_result = 0.0;
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || are_equal(actual_result, expected_result, 1e-8))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
             printf("ok\n");
             ++successful_test_number;
         } else {

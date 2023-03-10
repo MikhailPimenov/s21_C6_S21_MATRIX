@@ -3,9 +3,9 @@
 
 
 enum Errors {
-    OK = 0,
-    INCORRECT_MATRIX = 1,
-    CALCULATION_ERROR = 2,
+    ERROR_OK = 0,
+    ERROR_INCORRECT_MATRIX = 1,
+    ERROR_CALCULATION_ERROR = 2,
 };
 
 typedef struct matrix_struct {

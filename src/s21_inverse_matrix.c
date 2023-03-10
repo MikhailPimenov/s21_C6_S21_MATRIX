@@ -3,13 +3,13 @@
 
 int s21_inverse_matrix(matrix_t* a, matrix_t* result) {
     if (a->rows != a->columns)
-        return CALCULATION_ERROR;
+        return ERROR_CALCULATION_ERROR;
 
     double determinant = 0.0;
     s21_determinant(a, &determinant);
 
     if (are_equal(0.0, determinant, 1e-8))
-        return CALCULATION_ERROR;
+        return ERROR_CALCULATION_ERROR;
 
     matrix_t complements;
     s21_create_matrix(a->rows, a->columns, &complements);
@@ -25,5 +25,5 @@ int s21_inverse_matrix(matrix_t* a, matrix_t* result) {
 
     s21_remove_matrix(&transposed);
     s21_remove_matrix(&complements);
-    return OK;
+    return ERROR_OK;
 }

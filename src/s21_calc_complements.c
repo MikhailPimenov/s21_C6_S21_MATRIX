@@ -4,7 +4,7 @@
 
 int s21_calc_complements(matrix_t* a, matrix_t* result) {
     if (a->rows != a->columns)
-        return CALCULATION_ERROR;
+        return ERROR_CALCULATION_ERROR;
 
     matrix_t little_matrix;
     s21_create_matrix(a->rows - 1, a->columns - 1, &little_matrix);
@@ -20,5 +20,5 @@ int s21_calc_complements(matrix_t* a, matrix_t* result) {
 
     s21_remove_matrix(&little_matrix);
 
-    return OK;
+    return ERROR_OK;
 }

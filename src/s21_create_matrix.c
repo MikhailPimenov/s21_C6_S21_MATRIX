@@ -6,7 +6,7 @@ enum Error_allocation {
     ALLOCATION_ERROR = 1,
 };
 
-static void __initialize_matrix(matrix_t* matrix, double number) {
+static void initialize_matrix(matrix_t* matrix, double number) {
     for (int row = 0; row < matrix->rows; ++row)
         for (int column = 0; column < matrix->columns; ++column)
             matrix->matrix[row][column] = number;
@@ -24,6 +24,6 @@ int s21_create_matrix(int rows, int columns, matrix_t* result) {
     result->rows = rows;
     result->columns = columns;
 
-    __initialize_matrix(result, 0.0);
-    return OK;
+    initialize_matrix(result, 0.0);
+    return ERROR_OK;
 }

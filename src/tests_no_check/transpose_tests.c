@@ -19,7 +19,7 @@ void transpose_tests(int algorithm(const matrix_t*, matrix_t*), const char* func
 
         m.matrix[0][0] = 1.23;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -27,7 +27,7 @@ void transpose_tests(int algorithm(const matrix_t*, matrix_t*), const char* func
         expected_result.matrix[0][0] = 1.23;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -49,7 +49,7 @@ void transpose_tests(int algorithm(const matrix_t*, matrix_t*), const char* func
         m.matrix[0][0] = 1.23;
         m.matrix[0][1] = 2.46;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -58,7 +58,7 @@ void transpose_tests(int algorithm(const matrix_t*, matrix_t*), const char* func
         expected_result.matrix[1][0] = 2.46;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -86,7 +86,7 @@ void transpose_tests(int algorithm(const matrix_t*, matrix_t*), const char* func
         m.matrix[1][2] = 6.0;
 
 
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -99,7 +99,7 @@ void transpose_tests(int algorithm(const matrix_t*, matrix_t*), const char* func
         expected_result.matrix[2][1] = 6.0;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -117,13 +117,13 @@ void transpose_tests(int algorithm(const matrix_t*, matrix_t*), const char* func
         set_null(&m);
         matrix_t actual_result;
 
-        const int expected_code = INCORRECT_MATRIX;
+        const int expected_code = ERROR_INCORRECT_MATRIX;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {

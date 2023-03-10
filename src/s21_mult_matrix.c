@@ -2,7 +2,7 @@
 
 int s21_mult_matrix(matrix_t* a, matrix_t* b, matrix_t* result) {
     if (a->columns != b->rows)
-        return CALCULATION_ERROR;
+        return ERROR_CALCULATION_ERROR;
 
     const int sum_length = a->columns;
 
