@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../s21_matrix.h"
+#include "../s21_common.h"
 
 static void print_summary(const char* function_name, int test_number, int successful_test_number) {
     printf("Testing %s is over: %d / %d, %.2f%%\n", function_name, successful_test_number, test_number, 100.0f * (float)successful_test_number / (float)test_number);
@@ -16,7 +17,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         matrix_t actual_result;
         s21_create_matrix(1, 1, &m1);
         s21_create_matrix(1, 1, &m2);
-        s21_create_matrix(1, 1, &actual_result);
 
         m1.matrix[0][0] = 1.23;
         m2.matrix[0][0] = 1.23;
@@ -49,7 +49,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         matrix_t actual_result;
         s21_create_matrix(1, 2, &m1);
         s21_create_matrix(1, 1, &m2);
-        s21_create_matrix(1, 1, &actual_result);
 
         m1.matrix[0][0] = 1.23;
         m2.matrix[0][0] = 1.23;
@@ -69,7 +68,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         }
 
         s21_remove_matrix(&expected_result);
-        s21_remove_matrix(&actual_result);
         s21_remove_matrix(&m2);
         s21_remove_matrix(&m1);
     }
@@ -82,7 +80,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         matrix_t actual_result;
         s21_create_matrix(1, 2, &m1);
         s21_create_matrix(3, 3, &m2);
-        s21_create_matrix(1, 1, &actual_result);
 
         m1.matrix[0][0] = 1.23;
         m2.matrix[0][0] = 1.23;
@@ -102,7 +99,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         }
 
         s21_remove_matrix(&expected_result);
-        s21_remove_matrix(&actual_result);
         s21_remove_matrix(&m2);
         s21_remove_matrix(&m1);
     }
@@ -114,7 +110,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         matrix_t actual_result;
         s21_create_matrix(1, 2, &m1);
         s21_create_matrix(1, 2, &m2);
-        s21_create_matrix(1, 2, &actual_result);
 
         m1.matrix[0][0] = 1.23;
         m1.matrix[0][1] = 1.00;
@@ -153,7 +148,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         matrix_t actual_result;
         s21_create_matrix(2, 2, &m1);
         s21_create_matrix(2, 2, &m2);
-        s21_create_matrix(2, 2, &actual_result);
 
         m1.matrix[0][0] = 1.23;
         m1.matrix[0][1] = 1.00;
@@ -198,7 +192,6 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         matrix_t actual_result;
         s21_create_matrix(4, 2, &m1);
         s21_create_matrix(4, 2, &m2);
-        s21_create_matrix(4, 2, &actual_result);
 
         m1.matrix[0][0] = 1.23;
         m1.matrix[0][1] = 1.00;
@@ -250,13 +243,12 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
     }
     ++test_number;
 
-{//5========================================
+    {//5========================================
         matrix_t m1;
         matrix_t m2;
         matrix_t actual_result;
         s21_create_matrix(4, 2, &m1);
         s21_create_matrix(4, 2, &m2);
-        s21_create_matrix(4, 2, &actual_result);
 
         m1.matrix[0][0] = 8.8;
         m1.matrix[0][1] = 7.7;
@@ -302,8 +294,32 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         }
 
         s21_remove_matrix(&expected_result);
-        s21_remove_matrix(&actual_result);
         s21_remove_matrix(&m2);
+        s21_remove_matrix(&m1);
+    }
+    ++test_number;
+
+    {//6========================================
+        matrix_t m1;
+        matrix_t m2;
+        matrix_t actual_result;
+        s21_create_matrix(4, 2, &m1);
+        set_null(&m2);
+
+
+        const int expected_code = INCORRECT_MATRIX;
+        const int actual_code = algorithm(&m1, &m2, &actual_result);
+
+        matrix_t expected_result;
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
         s21_remove_matrix(&m1);
     }
     ++test_number;

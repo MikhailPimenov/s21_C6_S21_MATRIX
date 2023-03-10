@@ -70,25 +70,25 @@ s21_common.o: s21_common.c s21_common.h
 
 # $(GCOVR_CFLAGS)
 
-create_matrix_tests.o: tests_no_check/create_matrix_tests.c tests_no_check/all_tests_without_check.h
+create_matrix_tests.o: tests_no_check/create_matrix_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-eq_matrix_tests.o: tests_no_check/eq_matrix_tests.c tests_no_check/all_tests_without_check.h
+eq_matrix_tests.o: tests_no_check/eq_matrix_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-sum_matrix_tests.o: tests_no_check/sum_matrix_tests.c tests_no_check/all_tests_without_check.h
+sum_matrix_tests.o: tests_no_check/sum_matrix_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-sub_matrix_tests.o: tests_no_check/sub_matrix_tests.c tests_no_check/all_tests_without_check.h
+sub_matrix_tests.o: tests_no_check/sub_matrix_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-mult_number_tests.o: tests_no_check/mult_number_tests.c tests_no_check/all_tests_without_check.h
+mult_number_tests.o: tests_no_check/mult_number_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-mult_matrix_tests.o: tests_no_check/mult_matrix_tests.c tests_no_check/all_tests_without_check.h
+mult_matrix_tests.o: tests_no_check/mult_matrix_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-transpose_tests.o: tests_no_check/transpose_tests.c tests_no_check/all_tests_without_check.h
+transpose_tests.o: tests_no_check/transpose_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-determinant_tests.o: tests_no_check/determinant_tests.c tests_no_check/all_tests_without_check.h
+determinant_tests.o: tests_no_check/determinant_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-calc_complements_tests.o: tests_no_check/calc_complements_tests.c tests_no_check/all_tests_without_check.h
+calc_complements_tests.o: tests_no_check/calc_complements_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
-inverse_matrix_tests.o: tests_no_check/inverse_matrix_tests.c tests_no_check/all_tests_without_check.h
+inverse_matrix_tests.o: tests_no_check/inverse_matrix_tests.c tests_no_check/all_tests_without_check.h s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@
 
 
