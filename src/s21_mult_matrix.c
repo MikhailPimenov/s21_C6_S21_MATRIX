@@ -1,8 +1,14 @@
 #include "s21_matrix.h"
+#include "s21_common.h"
 
 int s21_mult_matrix(matrix_t* a, matrix_t* b, matrix_t* result) {
     if (a->columns != b->rows)
         return ERROR_CALCULATION_ERROR;
+
+    if (is_matrix_not_valid(a) || is_matrix_not_valid(b))
+        return ERROR_INCORRECT_MATRIX;
+
+    if ()
 
     const int sum_length = a->columns;
 
@@ -14,5 +20,5 @@ int s21_mult_matrix(matrix_t* a, matrix_t* b, matrix_t* result) {
             result->matrix[row][column] = sum;
         } 
     }
-    return OK;
+    return ERROR_OK;
 }
