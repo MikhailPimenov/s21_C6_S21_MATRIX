@@ -1,5 +1,5 @@
 #include "s21_matrix.h"
-#include <assert.h>
+#include "s21_common.h"
 
 
 int s21_calc_complements(matrix_t* a, matrix_t* result) {

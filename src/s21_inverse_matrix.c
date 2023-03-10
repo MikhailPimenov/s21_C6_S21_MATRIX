@@ -1,4 +1,5 @@
 #include "s21_matrix.h"
+#include "s21_common.h"
 
 int s21_inverse_matrix(matrix_t* a, matrix_t* result) {
     if (a->rows != a->columns)

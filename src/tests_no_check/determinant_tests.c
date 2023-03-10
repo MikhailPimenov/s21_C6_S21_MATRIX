@@ -1,5 +1,6 @@
-#include "../s21_matrix.h"
 #include <stdio.h>
+#include "../s21_matrix.h"
+#include "../s21_common.h"
 
 static void print_summary(const char* function_name, int test_number, int successful_test_number) {
     printf("Testing %s is over: %d / %d, %.2f%%\n", function_name, successful_test_number, test_number, 100.0f * (float)successful_test_number / (float)test_number);

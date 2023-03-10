@@ -30,10 +30,4 @@ int s21_calc_complements(matrix_t* a, matrix_t* result);
 int s21_determinant(matrix_t* a, double* result);
 int s21_inverse_matrix(matrix_t* a, matrix_t* result);
 
-int are_equal(double a, double b, double epsilon);
-int not_equal(double a, double b, double epsilon);
-int sign(int rows, int columns);
-void get_little_matrix(const matrix_t* a, int row_to_exclude, int column_to_exclude, matrix_t* result);
-
-
 #endif  //  SRC_S21_MATRIX_H_
