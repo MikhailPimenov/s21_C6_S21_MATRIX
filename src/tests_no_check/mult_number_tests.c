@@ -15,7 +15,6 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         const double number = 2.0;
         matrix_t actual_result;
         s21_create_matrix(1, 1, &m);
-        s21_create_matrix(1, 1, &actual_result);
 
         m.matrix[0][0] = 1.23;
 
@@ -46,7 +45,6 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         const double number = 0.1;
         matrix_t actual_result;
         s21_create_matrix(1, 1, &m);
-        s21_create_matrix(1, 1, &actual_result);
 
         m.matrix[0][0] = 1.23;
 
@@ -77,7 +75,6 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         const double number = 0.1;
         matrix_t actual_result;
         s21_create_matrix(2, 2, &m);
-        s21_create_matrix(2, 2, &actual_result);
 
         m.matrix[0][0] = 10.5;
         m.matrix[0][1] = 20.5;
@@ -114,7 +111,6 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         const double number = 0.0;
         matrix_t actual_result;
         s21_create_matrix(2, 2, &m);
-        s21_create_matrix(2, 2, &actual_result);
 
         m.matrix[0][0] = 10.5;
         m.matrix[0][1] = 20.5;

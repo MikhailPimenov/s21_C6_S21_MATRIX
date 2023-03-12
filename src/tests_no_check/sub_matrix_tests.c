@@ -243,7 +243,7 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
     }
     ++test_number;
 
-    {//5========================================
+    {//6========================================
         matrix_t m1;
         matrix_t m2;
         matrix_t actual_result;
@@ -294,12 +294,13 @@ void sub_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
         }
 
         s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&actual_result);
         s21_remove_matrix(&m2);
         s21_remove_matrix(&m1);
     }
     ++test_number;
 
-    {//6========================================
+    {//7========================================
         matrix_t m1;
         matrix_t m2;
         matrix_t actual_result;

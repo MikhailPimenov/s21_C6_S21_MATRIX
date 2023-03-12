@@ -8,7 +8,8 @@ int s21_mult_matrix(matrix_t* a, matrix_t* b, matrix_t* result) {
     if (is_matrix_not_valid(a) || is_matrix_not_valid(b))
         return ERROR_INCORRECT_MATRIX;
 
-    if ()
+    if (ERROR_OK != s21_create_matrix(a->rows, b->columns, result))
+        return ERROR_INCORRECT_MATRIX;
 
     const int sum_length = a->columns;
 

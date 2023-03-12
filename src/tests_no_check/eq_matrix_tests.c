@@ -110,6 +110,9 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 
@@ -144,6 +147,9 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 
@@ -176,6 +182,8 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 
@@ -209,6 +217,8 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 
@@ -242,6 +252,8 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 
@@ -281,6 +293,8 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 
@@ -320,6 +334,8 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 
@@ -359,6 +375,8 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
         } else {
             printf("FAILED\n");
         }
+        s21_remove_matrix(&m1);
+        s21_remove_matrix(&m2);
     }
     ++test_number;
 

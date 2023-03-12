@@ -15,7 +15,6 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         matrix_t actual_result;
 
         s21_create_matrix(3, 3, &m);
-        s21_create_matrix(3, 3, &actual_result);
 
         m.matrix[0][0] = 1.0;
         m.matrix[0][1] = 2.0;
@@ -27,7 +26,7 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         m.matrix[2][1] = 2.0;
         m.matrix[2][2] = 1.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -43,7 +42,7 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         expected_result.matrix[2][2] =   4.0;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -62,11 +61,8 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         matrix_t actual_result;
 
         s21_create_matrix(3, 4, &m);
-        s21_create_matrix(3, 4, &actual_result);
 
-        
-        
-        const int expected_code = CALCULATION_ERROR;
+        const int expected_code = ERROR_CALCULATION_ERROR;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -74,7 +70,7 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
   
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -93,7 +89,6 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         matrix_t actual_result;
 
         s21_create_matrix(3, 3, &m);
-        s21_create_matrix(3, 3, &actual_result);
 
         m.matrix[0][0] = 1.0;
         m.matrix[0][1] = 2.0;
@@ -105,7 +100,7 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         m.matrix[2][1] = 8.0;
         m.matrix[2][2] = 9.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -121,7 +116,7 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         expected_result.matrix[2][2] =  -3.0;  //  1 * (1*5 - 4*2) =  1 * (5  -  8) =  1 * (-3)  =  -3
  
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {

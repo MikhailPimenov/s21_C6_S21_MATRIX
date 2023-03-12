@@ -13,6 +13,12 @@ static void initialize_matrix(matrix_t* matrix, double number) {
 }
 
 int s21_create_matrix(int rows, int columns, matrix_t* result) {
+    if (rows < 1 || columns < 1)
+        return ERROR_INCORRECT_MATRIX;
+
+    if (!result)
+        return ERROR_INCORRECT_MATRIX;
+
     double** matrix = malloc(sizeof(double) * rows * columns + sizeof(double*) * rows);
     if (!matrix)
         return ALLOCATION_ERROR;

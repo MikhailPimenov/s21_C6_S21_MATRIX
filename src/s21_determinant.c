@@ -17,7 +17,6 @@ static double determinant(const matrix_t* a) {
 
     double result = 0.0;
     for (int column = 0; column < a->columns; ++column) {
-
         matrix_t little_matrix;
         s21_create_matrix(a->rows - 1, a->columns - 1, &little_matrix);
         get_little_matrix(a, 0, column, &little_matrix);
@@ -31,6 +30,9 @@ static double determinant(const matrix_t* a) {
 }
 
 int s21_determinant(matrix_t* a, double* result) {
+    if (is_matrix_not_valid(a))
+        return ERROR_INCORRECT_MATRIX;
+
     if (a->rows != a->columns)
         return ERROR_CALCULATION_ERROR;
 

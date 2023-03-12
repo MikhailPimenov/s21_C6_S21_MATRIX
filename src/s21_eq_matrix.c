@@ -1,4 +1,5 @@
 #include "s21_matrix.h"
+#include "s21_common.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -19,7 +20,7 @@ int not_equal(double a, double b, double epsilon) {
 }
 
 int s21_eq_matrix(matrix_t* a, matrix_t* b) {
-    if (!a || !b)
+    if (is_matrix_not_valid(a) || is_matrix_not_valid(b))
         return NOT_EQUAL;
 
     if (a->rows != b->rows || a->columns != b->columns)

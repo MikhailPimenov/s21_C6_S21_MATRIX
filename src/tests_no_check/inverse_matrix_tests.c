@@ -16,7 +16,6 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(3, 3, &m);
-        s21_create_matrix(3, 3, &actual_result);
 
         m.matrix[0][0] =  2.0;
         m.matrix[0][1] =  5.0;
@@ -28,7 +27,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         m.matrix[2][1] = -2.0;
         m.matrix[2][2] = -3.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -44,7 +43,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         expected_result.matrix[2][2] =  24.0;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -67,7 +66,6 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(3, 3, &m);
-        s21_create_matrix(3, 3, &actual_result);
 
         m.matrix[0][0] = 1.0;
         m.matrix[0][1] = 1.0;
@@ -79,7 +77,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         m.matrix[2][1] = 4.0;
         m.matrix[2][2] = 5.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -95,7 +93,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         expected_result.matrix[2][2] = -0.33333333333333;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -118,14 +116,13 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(2, 2, &m);
-        s21_create_matrix(2, 2, &actual_result);
 
         m.matrix[0][0] = 1.0;
         m.matrix[0][1] = 9.0;
         m.matrix[1][0] = 3.0;
         m.matrix[1][1] = 7.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -137,7 +134,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
      
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -160,14 +157,13 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(2, 2, &m);
-        s21_create_matrix(2, 2, &actual_result);
 
         m.matrix[0][0] = 0.5;
         m.matrix[0][1] = 1.0;
         m.matrix[1][0] = 3.0;
         m.matrix[1][1] = 7.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -179,7 +175,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
      
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -202,7 +198,6 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(3, 3, &m);
-        s21_create_matrix(3, 3, &actual_result);
 
         m.matrix[0][0] = 1.0;
         m.matrix[0][1] = 4.0;
@@ -214,7 +209,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         m.matrix[2][1] = 6.0;
         m.matrix[2][2] = 6.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -230,7 +225,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         expected_result.matrix[2][2] = -0.234375;
 
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -253,7 +248,6 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(4, 4, &m);
-        s21_create_matrix(4, 4, &actual_result);
 
         m.matrix[0][0] = 1.0;
         m.matrix[0][1] = 4.0;
@@ -272,7 +266,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         m.matrix[3][2] = 6.0;
         m.matrix[3][3] = 6.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -295,7 +289,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         expected_result.matrix[3][3] =  0.0;
         
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -317,7 +311,6 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(4, 4, &m);
-        s21_create_matrix(4, 4, &actual_result);
 
         m.matrix[0][0] = -2.433333333333333;
         m.matrix[0][1] =  1.566666666666666;
@@ -336,7 +329,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         m.matrix[3][2] =  0.0;
         m.matrix[3][3] =  0.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -360,7 +353,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         expected_result.matrix[3][3] = 6.0;
         
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {
@@ -384,7 +377,6 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         matrix_t actual_result;
 
         s21_create_matrix(4, 4, &m);
-        s21_create_matrix(4, 4, &actual_result);
 
         m.matrix[0][0] = -2.433333333333333;
         m.matrix[0][1] =  1.566666666666666;
@@ -403,7 +395,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
         m.matrix[3][2] =  0.0;
         m.matrix[3][3] =  0.0;
         
-        const int expected_code = OK;
+        const int expected_code = ERROR_OK;
         const int actual_code = algorithm(&m, &actual_result);
 
         matrix_t expected_result;
@@ -428,7 +420,7 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
 
         
         printf("test #%d:\t", test_number);
-        if (actual_code == expected_code && (actual_code != OK || s21_eq_matrix(&actual_result, &expected_result))) {
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
             printf("ok\n");
             ++successful_test_number;
         } else {

@@ -16,7 +16,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         matrix_t actual_result;
         s21_create_matrix(1, 1, &m1);
         s21_create_matrix(1, 1, &m2);
-        s21_create_matrix(1, 1, &actual_result);
 
         m1.matrix[0][0] = 0.0;
         m2.matrix[0][0] = 0.0;
@@ -50,7 +49,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         matrix_t actual_result;
         s21_create_matrix(3, 2, &m1);
         s21_create_matrix(2, 3, &m2);
-        s21_create_matrix(3, 3, &actual_result);
 
         m1.matrix[0][0] = 1.0;
         m1.matrix[0][1] = 4.0;
@@ -103,7 +101,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         matrix_t actual_result;
         s21_create_matrix(3, 2, &m1);
         s21_create_matrix(3, 3, &m2);
-        s21_create_matrix(3, 3, &actual_result);
 
         const int expected_code = ERROR_CALCULATION_ERROR;
         const int actual_code = algorithm(&m1, &m2, &actual_result);
@@ -133,7 +130,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         matrix_t actual_result;
         s21_create_matrix(3, 2, &m1);
         s21_create_matrix(2, 3, &m2);
-        s21_create_matrix(3, 3, &actual_result);
 
         m1.matrix[0][0] = 1.0;
         m1.matrix[0][1] = 2.0;
@@ -186,7 +182,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         matrix_t actual_result;
         s21_create_matrix(7, 3, &m1);
         s21_create_matrix(3, 5, &m2);
-        s21_create_matrix(7, 5, &actual_result);
 
         m1.matrix[0][0] = 1.5;
         m1.matrix[0][1] = 2.5;
