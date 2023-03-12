@@ -284,5 +284,65 @@ void determinant_tests(int algorithm(const matrix_t*, double*), const char* func
     }
     ++test_number;
 
+    {//8========================================
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        double actual_result = 0.0;
+        const int actual_code = algorithm(NULL, &actual_result);
+
+        const double expected_result = 0.0;
+ 
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+    }
+    ++test_number;
+
+    {//9========================================
+        matrix_t m;
+        s21_create_matrix(6, 6, &m);
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        double actual_result = 0.0;
+        const int actual_code = algorithm(&m, NULL);
+
+        const double expected_result = 0.0;
+ 
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+        s21_remove_matrix(&m);
+    }
+    ++test_number;
+
+    {//10========================================
+        matrix_t m;
+        s21_create_matrix(5, 5, &m);
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        double actual_result = 0.0;
+        const int actual_code = algorithm(&m, NULL);
+
+        const double expected_result = 0.0;
+ 
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || are_equal(actual_result, expected_result, 1e-8))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+        s21_remove_matrix(&m);
+    }
+    ++test_number;
+
+
     print_summary(function_name, test_number, successful_test_number);
 }

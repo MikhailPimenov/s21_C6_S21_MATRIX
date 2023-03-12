@@ -2,6 +2,9 @@
 #include "s21_common.h"
 
 int s21_inverse_matrix(matrix_t* a, matrix_t* result) {
+    if (is_matrix_not_valid(a) || !result)
+        return ERROR_INCORRECT_MATRIX;
+    
     if (a->rows != a->columns)
         return ERROR_CALCULATION_ERROR;
 

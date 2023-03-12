@@ -78,7 +78,8 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         }
 
         s21_remove_matrix(&expected_result);
-        s21_remove_matrix(&actual_result);
+        if (ERROR_OK == actual_code)
+            s21_remove_matrix(&actual_result);
         s21_remove_matrix(&m);
     }
     ++test_number;
@@ -124,10 +125,63 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
         }
 
         s21_remove_matrix(&expected_result);
-        s21_remove_matrix(&actual_result);
+        if (ERROR_OK == actual_code)
+            s21_remove_matrix(&actual_result);
         s21_remove_matrix(&m);
     }
     ++test_number;
+
+    {//3========================================
+        matrix_t actual_result;
+
+        const int expected_code = ERROR_CALCULATION_ERROR;
+        const int actual_code = algorithm(NULL, &actual_result);
+
+        matrix_t expected_result;
+        s21_create_matrix(3, 4, &expected_result);
+  
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        if (ERROR_OK == actual_code)
+            s21_remove_matrix(&actual_result);
+    }
+    ++test_number;
+
+    {//4========================================
+        matrix_t m;
+        matrix_t actual_result;
+        s21_create_matrix(5, 5, &m);
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        const int actual_code = algorithm(&m, NULL);
+
+        matrix_t expected_result;
+        s21_create_matrix(3, 4, &expected_result);
+  
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        if (ERROR_OK == actual_code)
+            s21_remove_matrix(&actual_result);
+        s21_remove_matrix(&m);
+    }
+    ++test_number;
+    
 
     print_summary(function_name, test_number, successful_test_number);
 }

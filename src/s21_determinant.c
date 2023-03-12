@@ -16,15 +16,16 @@ static double determinant(const matrix_t* a) {
         return determinant2x2(a->matrix[0][0], a->matrix[0][1], a->matrix[1][0], a->matrix[1][1]);
 
     double result = 0.0;
-    for (int column = 0; column < a->columns; ++column) {
-        matrix_t little_matrix;
-        s21_create_matrix(a->rows - 1, a->columns - 1, &little_matrix);
-        get_little_matrix(a, 0, column, &little_matrix);
-    
-        result += (a->matrix[0][column] * sign(0, column) * determinant(&little_matrix));
 
-        s21_remove_matrix(&little_matrix);
+    matrix_t little_matrix;
+    s21_create_matrix(a->rows - 1, a->columns - 1, &little_matrix);
+
+    for (int column = 0; column < a->columns; ++column) {
+        get_little_matrix(a, 0, column, &little_matrix);
+        result += (a->matrix[0][column] * sign(0, column) * determinant(&little_matrix));
     }
+    
+    s21_remove_matrix(&little_matrix);
 
     return result;
 }
@@ -35,6 +36,9 @@ int s21_determinant(matrix_t* a, double* result) {
 
     if (a->rows != a->columns)
         return ERROR_CALCULATION_ERROR;
+
+    if (!result)
+        return ERROR_INCORRECT_MATRIX;
 
     *result = determinant(a);
     return ERROR_OK;
