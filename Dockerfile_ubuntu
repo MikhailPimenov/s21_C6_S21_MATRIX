@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     make \
     gcc \
     check \
+    pkg-config \
     dos2unix \
     && rm -rf /var/lib/apt/lists
 
@@ -20,4 +21,4 @@ RUN groupadd -g 999 appuser && \
 
 USER appuser
 
-ENTRYPOINT [ "/bin/bash", "_run_make_valgrind_for_dockerfile.sh" ]
+ENTRYPOINT [ "/bin/bash", "/project/src/_run_make_valgrind_for_dockerfile.sh" ]

@@ -146,11 +146,10 @@ tests_no_check.out: s21_common.o s21_create_matrix.o s21_remove_matrix.o all_tes
 all_tests_without_check.o: tests_no_check/all_tests_without_check.c tests_no_check/all_tests_without_check.h
 		$(CC) -c $< -o $@ $(STRICT_CFLAGS) 
 
-# valgrind: tests_no_check.out tests_check.out
-valgrind: tests_no_check.out
+valgrind: tests_no_check.out tests_check.out
 		mkdir -p $(VALGRIND_REPORT_DIRECTORY)
 		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
-# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
 
 
 
