@@ -403,7 +403,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         }
 
         s21_remove_matrix(&expected_result);
-        s21_remove_matrix(&actual_result);
         s21_remove_matrix(&m2);
     }
     ++test_number;
