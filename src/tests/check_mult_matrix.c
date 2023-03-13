@@ -1,10 +1,3 @@
-//
-//  check_mult_matrix.c
-//  s21_matrix
-//
-//  Created by Joramun Sasin on 8/17/22.
-//
-
 #include "check_matrix.h"
 
 START_TEST(mmatr_1) {

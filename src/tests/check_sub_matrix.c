@@ -1,10 +1,3 @@
-//
-//  check_sub_matrix.c
-//  s21_matrix
-//
-//  Created by Joramun Sasin on 8/17/22.
-//
-
 #include "check_matrix.h"
 
 double loop_dbls_sub[10] = {1, -1, 0, 0.000001, 0.00000001, 10000, 1000000, 1234.5678, 1234567, 12345678};

@@ -1,10 +1,3 @@
-//
-//  check_matrix.h
-//  s21_matrix
-//
-//  Created by Joramun Sasin on 8/17/22.
-//
-
 #ifndef SRC_TESTS_CHECK_MATRIX_H_
 #define SRC_TESTS_CHECK_MATRIX_H_
 #include "../s21_matrix.h"
