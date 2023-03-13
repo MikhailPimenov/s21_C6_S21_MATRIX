@@ -529,6 +529,38 @@ void inverse_matrix_tests(int algorithm(const matrix_t*, matrix_t*), const char*
     }
     ++test_number;
 
+    {//10=======================================
+        matrix_t m;
+        matrix_t actual_result;
+
+        s21_create_matrix(2, 9, &m);
+
+       
+        const int expected_code = ERROR_CALCULATION_ERROR;
+        const int actual_code = algorithm(&m, &actual_result);
+
+        matrix_t expected_result;
+        s21_create_matrix(2, 2, &expected_result);
+     
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+            printf("expected:\n");
+            if (is_matrix_not_valid(&expected_result))
+                print_matrix(&expected_result, "\t", "\n");
+            printf("actual:\n");
+            if (is_matrix_not_valid(&actual_result))
+                print_matrix(&actual_result, "\t", "\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&m);
+    }
+    ++test_number;
+
 
     print_summary(function_name, test_number, successful_test_number);
 }

@@ -23,10 +23,10 @@ gcov_report: tests_no_check
 		-./tests_no_check.out	
 		mkdir -p $(REPORT_DIRECTORY)
 		gcovr . --html --html-details -o $(REPORT_DIRECTORY)/coverage_report.html
-# open $(REPORT_DIRECTORY)/coverage_report.functions.html  # MAC
-# open $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix*  # MAC 
-		START "" $(REPORT_DIRECTORY)/coverage_report.functions.html  
-		# START "" $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix*   
+		open $(REPORT_DIRECTORY)/coverage_report.functions.html
+# open $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix* 
+# START "" $(REPORT_DIRECTORY)/coverage_report.functions.html  
+# START "" $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix*   
 		
 
 test: test.out
