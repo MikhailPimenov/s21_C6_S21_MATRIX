@@ -203,6 +203,7 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         }
 
         s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&m);
     }
     ++test_number;
 
@@ -238,6 +239,8 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
 
         s21_remove_matrix(&expected_result);
         s21_remove_matrix(&m);
+
+        s21_remove_matrix(NULL);
     }
     ++test_number;
 
