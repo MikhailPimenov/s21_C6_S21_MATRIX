@@ -2,7 +2,7 @@
 #include "s21_common.h"
 
 int s21_sum_matrix(matrix_t* a, matrix_t* b, matrix_t* result) {
-    if (is_matrix_not_valid(a) || is_matrix_not_valid(b))
+    if (is_matrix_not_valid(a) || is_matrix_not_valid(b) || !result)
         return ERROR_INCORRECT_MATRIX;
 
     if (a->rows != b->rows || a->columns != b->columns)

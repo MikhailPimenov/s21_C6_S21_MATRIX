@@ -31,14 +31,11 @@ static double determinant(const matrix_t* a) {
 }
 
 int s21_determinant(matrix_t* a, double* result) {
-    if (is_matrix_not_valid(a))
+    if (is_matrix_not_valid(a) || !result)
         return ERROR_INCORRECT_MATRIX;
 
     if (a->rows != a->columns)
         return ERROR_CALCULATION_ERROR;
-
-    if (!result)
-        return ERROR_INCORRECT_MATRIX;
 
     *result = determinant(a);
     return ERROR_OK;

@@ -16,11 +16,11 @@ GCOVR_LFLAGS=-lgcov
 REPORT_DIRECTORY=report
 VALGRIND_REPORT_DIRECTORY=valgrind_report
 
-all: tests_no_check
+all: tests_no_check gcov_report
 
 
 gcov_report: tests_no_check
-		-./tests_no_check.out	
+# -./tests_no_check.out	
 		mkdir -p $(REPORT_DIRECTORY)
 		gcovr . --html --html-details -o $(REPORT_DIRECTORY)/coverage_report.html
 		open $(REPORT_DIRECTORY)/coverage_report.functions.html

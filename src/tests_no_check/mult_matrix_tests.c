@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../s21_matrix.h"
+#include "../s21_common.h"
 
 static void print_summary(const char* function_name, int test_number, int successful_test_number) {
     printf("Testing %s is over: %d / %d, %.2f%%\n", function_name, successful_test_number, test_number, 100.0f * (float)successful_test_number / (float)test_number);
@@ -278,6 +279,227 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
     }
     ++test_number;
 
+
+    {//5========================================
+        matrix_t m1;
+        matrix_t m2;
+        matrix_t actual_result;
+        set_null(&m1);
+        s21_create_matrix(2, 3, &m2);
+
+        m2.matrix[0][0] =  7.0;
+        m2.matrix[0][1] =  8.0;
+        m2.matrix[0][2] =  9.0;
+        m2.matrix[1][0] = 10.0;
+        m2.matrix[1][1] = 11.0;
+        m2.matrix[1][2] = 12.0;
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        const int actual_code = algorithm(&m1, &m2, &actual_result);
+
+        matrix_t expected_result;
+        s21_create_matrix(3, 3, &expected_result);
+        expected_result.matrix[0][0] =  27.0;
+        expected_result.matrix[0][1] =  30.0;
+        expected_result.matrix[0][2] =  33.0;
+        expected_result.matrix[1][0] =  61.0;
+        expected_result.matrix[1][1] =  68.0;
+        expected_result.matrix[1][2] =  75.0;
+        expected_result.matrix[2][0] =  95.0;
+        expected_result.matrix[2][1] = 106.0;
+        expected_result.matrix[2][2] = 117.0;
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&m2);
+    }
+    ++test_number;
+
+
+    {//6========================================
+        matrix_t m1;
+        matrix_t m2;
+        matrix_t actual_result;
+        set_null(&m1);
+        s21_create_matrix(2, 3, &m2);
+
+        m2.matrix[0][0] =  7.0;
+        m2.matrix[0][1] =  8.0;
+        m2.matrix[0][2] =  9.0;
+        m2.matrix[1][0] = 10.0;
+        m2.matrix[1][1] = 11.0;
+        m2.matrix[1][2] = 12.0;
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        const int actual_code = algorithm(&m1, &m2, &actual_result);
+
+        matrix_t expected_result;
+        s21_create_matrix(3, 3, &expected_result);
+        expected_result.matrix[0][0] =  27.0;
+        expected_result.matrix[0][1] =  30.0;
+        expected_result.matrix[0][2] =  33.0;
+        expected_result.matrix[1][0] =  61.0;
+        expected_result.matrix[1][1] =  68.0;
+        expected_result.matrix[1][2] =  75.0;
+        expected_result.matrix[2][0] =  95.0;
+        expected_result.matrix[2][1] = 106.0;
+        expected_result.matrix[2][2] = 117.0;
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&m2);
+    }
+    ++test_number;
+
+    {//7========================================
+        matrix_t m1;
+        matrix_t m2;
+        matrix_t actual_result;
+        set_null(&m1);
+        s21_create_matrix(2, 3, &m2);
+
+        m2.matrix[0][0] =  7.0;
+        m2.matrix[0][1] =  8.0;
+        m2.matrix[0][2] =  9.0;
+        m2.matrix[1][0] = 10.0;
+        m2.matrix[1][1] = 11.0;
+        m2.matrix[1][2] = 12.0;
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        const int actual_code = algorithm(&m2, &m1, &actual_result);
+
+        matrix_t expected_result;
+        s21_create_matrix(3, 3, &expected_result);
+        expected_result.matrix[0][0] =  27.0;
+        expected_result.matrix[0][1] =  30.0;
+        expected_result.matrix[0][2] =  33.0;
+        expected_result.matrix[1][0] =  61.0;
+        expected_result.matrix[1][1] =  68.0;
+        expected_result.matrix[1][2] =  75.0;
+        expected_result.matrix[2][0] =  95.0;
+        expected_result.matrix[2][1] = 106.0;
+        expected_result.matrix[2][2] = 117.0;
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&actual_result);
+        s21_remove_matrix(&m2);
+    }
+    ++test_number;
+
+    {//8========================================
+        matrix_t m1;
+        matrix_t m2;
+        matrix_t actual_result;
+        set_null(&m1);
+        s21_create_matrix(2, 3, &m2);
+
+        m2.matrix[0][0] =  7.0;
+        m2.matrix[0][1] =  8.0;
+        m2.matrix[0][2] =  9.0;
+        m2.matrix[1][0] = 10.0;
+        m2.matrix[1][1] = 11.0;
+        m2.matrix[1][2] = 12.0;
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        const int actual_code = algorithm(&m2, &m1, NULL);
+
+        matrix_t expected_result;
+        s21_create_matrix(3, 3, &expected_result);
+        expected_result.matrix[0][0] =  27.0;
+        expected_result.matrix[0][1] =  30.0;
+        expected_result.matrix[0][2] =  33.0;
+        expected_result.matrix[1][0] =  61.0;
+        expected_result.matrix[1][1] =  68.0;
+        expected_result.matrix[1][2] =  75.0;
+        expected_result.matrix[2][0] =  95.0;
+        expected_result.matrix[2][1] = 106.0;
+        expected_result.matrix[2][2] = 117.0;
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&m2);
+        s21_remove_matrix(&m1);
+    }
+    ++test_number;
+
+    {//9========================================
+        matrix_t m1;
+        matrix_t m2;
+        matrix_t actual_result;
+        s21_create_matrix(3, 2, &m1);
+        s21_create_matrix(2, 3, &m2);
+
+        m1.matrix[0][0] = 1.0;
+        m1.matrix[0][1] = 2.0;
+        m1.matrix[1][0] = 3.0;
+        m1.matrix[1][1] = 4.0;
+        m1.matrix[2][0] = 5.0;
+        m1.matrix[2][1] = 6.0;
+
+        m2.matrix[0][0] =  7.0;
+        m2.matrix[0][1] =  8.0;
+        m2.matrix[0][2] =  9.0;
+        m2.matrix[1][0] = 10.0;
+        m2.matrix[1][1] = 11.0;
+        m2.matrix[1][2] = 12.0;
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;
+        const int actual_code = algorithm(&m1, &m2, NULL);
+
+        matrix_t expected_result;
+        s21_create_matrix(3, 3, &expected_result);
+        expected_result.matrix[0][0] =  27.0;
+        expected_result.matrix[0][1] =  30.0;
+        expected_result.matrix[0][2] =  33.0;
+        expected_result.matrix[1][0] =  61.0;
+        expected_result.matrix[1][1] =  68.0;
+        expected_result.matrix[1][2] =  75.0;
+        expected_result.matrix[2][0] =  95.0;
+        expected_result.matrix[2][1] = 106.0;
+        expected_result.matrix[2][2] = 117.0;
+
+        printf("test #%d:\t", test_number);
+        if (actual_code == expected_code && (actual_code != ERROR_OK || s21_eq_matrix(&actual_result, &expected_result))) {
+            printf("ok\n");
+            ++successful_test_number;
+        } else {
+            printf("FAILED\n");
+        }
+
+        s21_remove_matrix(&expected_result);
+        s21_remove_matrix(&m2);
+        s21_remove_matrix(&m1);
+    }
+    ++test_number;
 
     print_summary(function_name, test_number, successful_test_number);
 }

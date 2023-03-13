@@ -134,7 +134,7 @@ void calc_complements_tests(int algorithm(const matrix_t*, matrix_t*), const cha
     {//3========================================
         matrix_t actual_result;
 
-        const int expected_code = ERROR_CALCULATION_ERROR;
+        const int expected_code = ERROR_INCORRECT_MATRIX;
         const int actual_code = algorithm(NULL, &actual_result);
 
         matrix_t expected_result;
