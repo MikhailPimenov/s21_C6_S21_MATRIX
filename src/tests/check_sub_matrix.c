@@ -21,7 +21,7 @@ START_TEST(normal_sub) {
             value2 -= (rand() - loop_dbls_sub[_i]) / (rand() + 1);
         }
     }
-    ck_assert_int_eq(s21_sub_matrix(&val1, &val2, &result), OK);
+    ck_assert_int_eq(s21_sub_matrix(&val1, &val2, &result), ERROR_OK);
     ck_assert_int_eq(s21_eq_matrix(&result, &expected), SUCCESS);
     s21_remove_matrix(&val1);
     s21_remove_matrix(&val2);
@@ -39,7 +39,7 @@ START_TEST(error) {
     columns = rand() % 1000 + 1;
     s21_create_matrix(rows, columns, &val2);
 
-    ck_assert_int_eq(s21_sub_matrix(&val1, &val2, &result), C_ERROR);
+    ck_assert_int_eq(s21_sub_matrix(&val1, &val2, &result), ERROR_CALCULATION_ERROR);
     s21_remove_matrix(&val1);
     s21_remove_matrix(&val2);
 }

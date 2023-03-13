@@ -9,7 +9,7 @@ START_TEST(determinant_1) {
         for (int j = 0; j < size; j++)
             val1.matrix[i][j] = j;
     double result = 0;
-    ck_assert_int_eq(s21_determinant(&val1, &result), OK);
+    ck_assert_int_eq(s21_determinant(&val1, &result), ERROR_OK);
     ck_assert_double_eq_tol(result, 0, 1e-6);
 
     s21_remove_matrix(&val1);
@@ -26,7 +26,7 @@ START_TEST(determinant_2) {
             val1.matrix[i][j] = j + i;
 
     double result = 0;
-    ck_assert_int_eq(s21_determinant(&val1, &result), OK);
+    ck_assert_int_eq(s21_determinant(&val1, &result), ERROR_OK);
     ck_assert_double_eq_tol(result, 0, 1e-6);
 
     s21_remove_matrix(&val1);
@@ -55,7 +55,7 @@ START_TEST(determinant_3) {
     val1.matrix[4][4] = -2;
 
     double result = 0;
-    ck_assert_int_eq(s21_determinant(&val1, &result), OK);
+    ck_assert_int_eq(s21_determinant(&val1, &result), ERROR_OK);
     ck_assert_double_eq_tol(result, 2480, 1e-6);
 
     s21_remove_matrix(&val1);
@@ -77,7 +77,7 @@ START_TEST(determinant_4) {
     val1.matrix[2][2] = 1;
 
     double result = 0;
-    ck_assert_int_eq(s21_determinant(&val1, &result), OK);
+    ck_assert_int_eq(s21_determinant(&val1, &result), ERROR_OK);
     ck_assert_double_eq_tol(result, -32, 1e-6);
 
     s21_remove_matrix(&val1);
@@ -94,7 +94,7 @@ START_TEST(determinant_5) {
     val1.matrix[1][1] = -3;
 
     double result = 0;
-    ck_assert_int_eq(s21_determinant(&val1, &result), OK);
+    ck_assert_int_eq(s21_determinant(&val1, &result), ERROR_OK);
     ck_assert_double_eq_tol(result, 7, 1e-6);
 
     s21_remove_matrix(&val1);
@@ -172,7 +172,7 @@ START_TEST(determinant_6) {
 
 
     double result = 0;
-    ck_assert_int_eq(s21_determinant(&val1, &result), OK);
+    ck_assert_int_eq(s21_determinant(&val1, &result), ERROR_OK);
     ck_assert_double_eq_tol(result, -616458, 1e-6);
 
     s21_remove_matrix(&val1);

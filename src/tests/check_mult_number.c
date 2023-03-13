@@ -18,7 +18,7 @@ START_TEST(mult_num) {
             value1 += (rand() - loop_dbls_mnum[_i]) / (rand() + 1);
         }
     }
-    ck_assert_int_eq(s21_mult_number(&val1, value2, &result), OK);
+    ck_assert_int_eq(s21_mult_number(&val1, value2, &result), ERROR_OK);
     ck_assert_int_eq(s21_eq_matrix(&result, &expected), SUCCESS);
     s21_remove_matrix(&val1);
     s21_remove_matrix(&expected);

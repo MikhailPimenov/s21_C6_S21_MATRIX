@@ -35,7 +35,7 @@ START_TEST(mmatr_1) {
     expected.matrix[2][1] = -377;
     expected.matrix[2][2] = -494;
 
-    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), OK);
+    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), ERROR_OK);
     ck_assert_int_eq(s21_eq_matrix(&result, &expected), SUCCESS);
 
     s21_remove_matrix(&val1);
@@ -68,7 +68,7 @@ START_TEST(mmatr_2) {
     expected.matrix[1][0] = -20;
     expected.matrix[2][0] = -15;
 
-    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), OK);
+    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), ERROR_OK);
     ck_assert_int_eq(s21_eq_matrix(&result, &expected), SUCCESS);
 
     s21_remove_matrix(&val1);
@@ -130,7 +130,7 @@ START_TEST(mmatr_3) {
     expected.matrix[1][4] = 102;
     expected.matrix[1][5] = 155;
 
-    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), OK);
+    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), ERROR_OK);
     ck_assert_int_eq(s21_eq_matrix(&result, &expected), SUCCESS);
 
     s21_remove_matrix(&val1);
@@ -175,7 +175,7 @@ START_TEST(mmatr_4) {
     expected.matrix[2][1] = 810;
     expected.matrix[2][2] = 819;
 
-    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), OK);
+    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), ERROR_OK);
     ck_assert_int_eq(s21_eq_matrix(&result, &expected), SUCCESS);
 
     s21_remove_matrix(&val1);
@@ -194,7 +194,7 @@ START_TEST(error) {
     columns = rand() % 1000 + 1;
     s21_create_matrix(rows, columns, &val2);
 
-    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), C_ERROR);
+    ck_assert_int_eq(s21_mult_matrix(&val1, &val2, &result), ERROR_CALCULATION_ERROR);
     s21_remove_matrix(&val1);
     s21_remove_matrix(&val2);
 }

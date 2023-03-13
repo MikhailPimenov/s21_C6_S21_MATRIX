@@ -15,7 +15,7 @@ START_TEST(transpose) {
         }
     }
 
-    ck_assert_int_eq(s21_transpose(&val1, &result), OK);
+    ck_assert_int_eq(s21_transpose(&val1, &result), ERROR_OK);
     ck_assert_int_eq(s21_eq_matrix(&expected, &result), SUCCESS);
 
     s21_remove_matrix(&val1);

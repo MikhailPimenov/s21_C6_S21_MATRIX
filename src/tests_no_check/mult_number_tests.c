@@ -219,7 +219,8 @@ void mult_number_tests(int algorithm(const matrix_t*, double, matrix_t*), const 
         m.matrix[1][0] = 30.5;
         m.matrix[1][1] = 40.5;
 
-        const int expected_code = ERROR_INCORRECT_MATRIX;
+        // const int expected_code = ERROR_INCORRECT_MATRIX;
+        const int expected_code = ERROR_CALCULATION_ERROR;
         const int actual_code = algorithm(&m, number, &actual_result);
 
         matrix_t expected_result;

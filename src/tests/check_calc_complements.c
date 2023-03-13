@@ -65,7 +65,7 @@ END_TEST
 START_TEST(empty) {
     matrix_t A = {0};
     matrix_t B = {0};
-    ck_assert_int_eq(s21_calc_complements(&A, &B), M_ERROR);
+    ck_assert_int_eq(s21_calc_complements(&A, &B), ERROR_INCORRECT_MATRIX);
 }
 END_TEST
 
@@ -73,7 +73,7 @@ START_TEST(size_mismatch) {
     matrix_t A = {0};
     matrix_t B = {0};
     s21_create_matrix(1, 2, &A);
-    ck_assert_int_eq(s21_calc_complements(&A, &B), C_ERROR);
+    ck_assert_int_eq(s21_calc_complements(&A, &B), ERROR_CALCULATION_ERROR);
     s21_remove_matrix(&A);
 }
 END_TEST
@@ -103,7 +103,7 @@ START_TEST(complements) {
     expected.matrix[2][2] = 4;
 
     matrix_t result = {0};
-    ck_assert_int_eq(s21_calc_complements(&val1, &result), OK);
+    ck_assert_int_eq(s21_calc_complements(&val1, &result), ERROR_OK);
 
     ck_assert_int_eq(s21_eq_matrix(&expected, &result), SUCCESS);
     s21_remove_matrix(&val1);

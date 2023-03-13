@@ -1,8 +1,10 @@
 #ifndef SRC_TESTS_CHECK_MATRIX_H_
 #define SRC_TESTS_CHECK_MATRIX_H_
+
 #include "../s21_matrix.h"
 #include <check.h>
 #include <time.h>
+#include <stdlib.h>
 
 #define ONE_MATRIX for (int i_row = 0; i_row < A.rows; i_row++) {\
                         for (int i_column = 0; i_column < A.columns; i_column++) {\
