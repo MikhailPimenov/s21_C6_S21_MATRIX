@@ -43,7 +43,7 @@ gcov_report: test
 test: tests_check.out
 		-./tests_check.out
 
-tests_check.out: tests/check_tests_main.o tests/check_calc_complements.o tests/check_determinant.o tests/check_eq_matrix.o tests/check_inverse_matrix.o tests/check_mult_matrix.o tests/check_mult_number.o tests/check_sub_matrix.o tests/check_sum_matrix.o tests/check_transpose.o tests/test_extrapack.o s21_calc_complements.o s21_determinant.o s21_inverse_matrix.o s21_mult_matrix.o s21_mult_number.o s21_sub_matrix.o s21_transpose.o s21_eq_matrix.o s21_sum_matrix.o s21_create_matrix.o s21_remove_matrix.o s21_common.o 
+tests_check.out: tests/check_tests_main.o tests/check_calc_complements.o tests/check_determinant.o tests/check_eq_matrix.o tests/check_inverse_matrix.o tests/check_mult_matrix.o tests/check_mult_number.o tests/check_sub_matrix.o tests/check_sum_matrix.o tests/check_transpose.o tests/test_extrapack.o tests/test_from_no_check.o s21_calc_complements.o s21_determinant.o s21_inverse_matrix.o s21_mult_matrix.o s21_mult_number.o s21_sub_matrix.o s21_transpose.o s21_eq_matrix.o s21_sum_matrix.o s21_create_matrix.o s21_remove_matrix.o s21_common.o 
 		$(CC)  -o $@ $^ $(CHECK_LFLAGS) $(GCOVR_LFLAGS)
 
 tests/check_tests_main.o: tests/check_tests_main.c tests/check_matrix.h 
@@ -67,6 +67,8 @@ tests/check_sum_matrix.o: tests/check_sum_matrix.c tests/check_matrix.h
 tests/check_transpose.o: tests/check_transpose.c tests/check_matrix.h
 		$(CC) -c -o $@ $<
 tests/test_extrapack.o: tests/test_extrapack.c tests/check_matrix.h
+		$(CC) -c -o $@ $<
+tests/test_from_no_check.o: tests/test_from_no_check.c tests/check_matrix.h
 		$(CC) -c -o $@ $<
 
 

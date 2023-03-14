@@ -22,6 +22,7 @@ Suite *complements_matrix_suite(void);
 Suite *determinant_matrix_suite(void);
 Suite *inverse_matrix_suite(void);
 Suite *extrapack_suite(void);
+Suite *from_no_check_suite(void);
 
 int     s21_print_matrix(matrix_t A);
 

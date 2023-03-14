@@ -447,7 +447,7 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
     }
     ++test_number;
 
-    {//12=======================================
+    {//13=======================================
         matrix_t m1;
         matrix_t m2;
 
@@ -467,7 +467,7 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
     }
     ++test_number;
 
-    {//13========================================
+    {//14========================================
         matrix_t m1;
         matrix_t m2;
 
@@ -493,7 +493,7 @@ void eq_matrix_tests(int algorithm(const matrix_t*, const matrix_t*), const char
     }
     ++test_number;
 
-     {//14========================================
+     {//15========================================
         matrix_t m1;
         matrix_t m2;
 
