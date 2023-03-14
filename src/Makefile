@@ -15,26 +15,36 @@ GCOVR_LFLAGS=-lgcov
 
 
 REPORT_DIRECTORY=report
+REPORT_DIRECTORY_NO_CHECK=report_no_check
 VALGRIND_REPORT_DIRECTORY=valgrind_report
 
 all: tests_no_check gcov_report
 
 
-gcov_report: tests_no_check
-# -./tests_no_check.out	
+gcov_report_no_check: tests_no_check	
+		mkdir -p $(REPORT_DIRECTORY_NO_CHECK)
+		gcovr . --html --html-details -o $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.html
+		open $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.functions.html
+# open $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.s21_eq_matrix* 
+# START "" $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.functions.html  
+# START "" $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.s21_eq_matrix*   
+		
+gcov_report: test
 		mkdir -p $(REPORT_DIRECTORY)
 		gcovr . --html --html-details -o $(REPORT_DIRECTORY)/coverage_report.html
 		open $(REPORT_DIRECTORY)/coverage_report.functions.html
 # open $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix* 
 # START "" $(REPORT_DIRECTORY)/coverage_report.functions.html  
-# START "" $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix*   
-		
+# START "" $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix*  
+
+
+
 
 test: tests_check.out
 		-./tests_check.out
 
 tests_check.out: tests/check_tests_main.o tests/check_calc_complements.o tests/check_determinant.o tests/check_eq_matrix.o tests/check_inverse_matrix.o tests/check_mult_matrix.o tests/check_mult_number.o tests/check_sub_matrix.o tests/check_sum_matrix.o tests/check_transpose.o tests/test_extrapack.o s21_calc_complements.o s21_determinant.o s21_inverse_matrix.o s21_mult_matrix.o s21_mult_number.o s21_sub_matrix.o s21_transpose.o s21_eq_matrix.o s21_sum_matrix.o s21_create_matrix.o s21_remove_matrix.o s21_common.o 
-		$(CC) $(CHECK_LFLAGS) $(GCOVR_LFLAGS) -o $@ $^ 
+		$(CC)  -o $@ $^ $(CHECK_LFLAGS) $(GCOVR_LFLAGS)
 
 tests/check_tests_main.o: tests/check_tests_main.c tests/check_matrix.h 
 		$(CC) -c -o $@ $<
@@ -58,28 +68,6 @@ tests/check_transpose.o: tests/check_transpose.c tests/check_matrix.h
 		$(CC) -c -o $@ $<
 tests/test_extrapack.o: tests/test_extrapack.c tests/check_matrix.h
 		$(CC) -c -o $@ $<
-
-
-# s21_calc_complements.o 
-# s21_determinant.o 
-# s21_inverse_matrix.o 
-# s21_mult_matrix.o 
-# s21_mult_number.o 
-# s21_sub_matrix.o 
-# s21_transpose.o 
-# s21_eq_matrix.o 
-# s21_sum_matrix.o 
-# s21_create_matrix.o 
-# s21_remove_matrix.o 
-# s21_common.o 
-
-
-
-
-
-
-# tests/s21_all_tests.o: tests_no_check/s21_all_tests.c s21_matrix.h	
-# $(CC) -c $< -o $@ $(STRICT_CFLAGS) $(CHECK_CFLAGS)
 
 
 s21_create_matrix.o: s21_create_matrix.c s21_matrix.h

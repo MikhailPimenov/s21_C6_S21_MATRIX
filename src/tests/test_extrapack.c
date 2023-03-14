@@ -1,7 +1,6 @@
 #include "check_matrix.h"
 
 
-
 START_TEST(complements_1) {
     matrix_t A, B, R;
     s21_create_matrix(3, 3, &A);
