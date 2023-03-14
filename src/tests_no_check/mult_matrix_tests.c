@@ -328,7 +328,7 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         matrix_t m2;
         matrix_t actual_result;
         set_null(&m1);
-        s21_create_matrix(2, 3, &m2);
+        set_null(&m2);
 
         m2.matrix[0][0] =  7.0;
         m2.matrix[0][1] =  8.0;
@@ -361,7 +361,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         }
 
         s21_remove_matrix(&expected_result);
-        s21_remove_matrix(&m2);
     }
     ++test_number;
 

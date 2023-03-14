@@ -138,8 +138,12 @@ all_tests_without_check.o: tests_no_check/all_tests_without_check.c tests_no_che
 
 valgrind: tests_no_check.out tests_check.out
 		mkdir -p $(VALGRIND_REPORT_DIRECTORY)
-		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
-		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
 
 
 
