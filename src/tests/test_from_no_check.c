@@ -1819,15 +1819,15 @@ Suite *from_no_check_suite(void) {
     // tcase_add_test(tc1_1, inverse_matrix_12_1x1_matrix);
     
     tcase_add_test(tc1_1, mult_matrix_0);
-    // tcase_add_test(tc1_1, mult_matrix_1);
-    // tcase_add_test(tc1_1, mult_matrix_2_calculation_error_different_columns);
-    // tcase_add_test(tc1_1, mult_matrix_3);
-    // tcase_add_test(tc1_1, mult_matrix_4);
-    // tcase_add_test(tc1_1, mult_matrix_5_incorrect_matrix_set_null);
-    // tcase_add_test(tc1_1, mult_matrix_6_incorrect_matrix_set_null);
-    // tcase_add_test(tc1_1, mult_matrix_7_incorrect_matrix_set_null);
-    // tcase_add_test(tc1_1, mult_matrix_8_incorrect_matrix_null);
-    // tcase_add_test(tc1_1, mult_matrix_9_incorrect_matrix_null);
+    tcase_add_test(tc1_1, mult_matrix_1);
+    tcase_add_test(tc1_1, mult_matrix_2_calculation_error_different_columns);
+    tcase_add_test(tc1_1, mult_matrix_3);
+    tcase_add_test(tc1_1, mult_matrix_4);
+    tcase_add_test(tc1_1, mult_matrix_5_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, mult_matrix_6_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, mult_matrix_7_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, mult_matrix_8_incorrect_matrix_null);
+    tcase_add_test(tc1_1, mult_matrix_9_incorrect_matrix_null);
 
     suite_add_tcase(s1, tc1_1);
     return s1;

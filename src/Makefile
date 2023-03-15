@@ -25,17 +25,13 @@ gcov_report_no_check: tests_no_check
 		mkdir -p $(REPORT_DIRECTORY_NO_CHECK)
 		gcovr . --html --html-details -o $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.html
 		open $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.functions.html
-# open $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.s21_eq_matrix* 
 # START "" $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.functions.html  
-# START "" $(REPORT_DIRECTORY_NO_CHECK)/coverage_report.s21_eq_matrix*   
 		
 gcov_report: test
 		mkdir -p $(REPORT_DIRECTORY)
 		gcovr . --html --html-details -o $(REPORT_DIRECTORY)/coverage_report.html
 		open $(REPORT_DIRECTORY)/coverage_report.functions.html
-# open $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix* 
 # START "" $(REPORT_DIRECTORY)/coverage_report.functions.html  
-# START "" $(REPORT_DIRECTORY)/coverage_report.s21_eq_matrix*  
 
 
 
@@ -47,29 +43,29 @@ tests_check.out: tests/check_tests_main.o tests/check_calc_complements.o tests/c
 		$(CC)  -o $@ $^ $(CHECK_LFLAGS) $(GCOVR_LFLAGS)
 
 tests/check_tests_main.o: tests/check_tests_main.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_calc_complements.o: tests/check_calc_complements.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_determinant.o: tests/check_determinant.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_eq_matrix.o: tests/check_eq_matrix.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_inverse_matrix.o: tests/check_inverse_matrix.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_mult_matrix.o: tests/check_mult_matrix.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_mult_number.o: tests/check_mult_number.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_sub_matrix.o: tests/check_sub_matrix.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_sum_matrix.o: tests/check_sum_matrix.c tests/check_matrix.h 
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/check_transpose.o: tests/check_transpose.c tests/check_matrix.h
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/test_extrapack.o: tests/test_extrapack.c tests/check_matrix.h
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 tests/test_from_no_check.o: tests/test_from_no_check.c tests/check_matrix.h
-		$(CC) -c -o $@ $<
+		$(CC) -c -o $@ $< $(CHECK_CFLAGS)
 
 
 s21_create_matrix.o: s21_create_matrix.c s21_matrix.h
@@ -138,14 +134,13 @@ all_tests_without_check.o: tests_no_check/all_tests_without_check.c tests_no_che
 
 valgrind: tests_no_check.out tests_check.out
 		mkdir -p $(VALGRIND_REPORT_DIRECTORY)
-# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
-# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
-# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
-# -valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
-		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
-		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+		-valgrind --leak-check=full --show-reachable=no --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+		-valgrind --leak-check=full --show-reachable=no --track-origins=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
 
-
+valgrind_full: tests_no_check.out tests_check.out
+		mkdir -p $(VALGRIND_REPORT_DIRECTORY)
+		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
+		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
 
 clean:
 		rm -rf report

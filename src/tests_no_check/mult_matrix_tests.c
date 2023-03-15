@@ -330,13 +330,6 @@ void mult_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*
         set_null(&m1);
         set_null(&m2);
 
-        m2.matrix[0][0] =  7.0;
-        m2.matrix[0][1] =  8.0;
-        m2.matrix[0][2] =  9.0;
-        m2.matrix[1][0] = 10.0;
-        m2.matrix[1][1] = 11.0;
-        m2.matrix[1][2] = 12.0;
-
         const int expected_code = ERROR_INCORRECT_MATRIX;
         const int actual_code = algorithm(&m1, &m2, &actual_result);
 
