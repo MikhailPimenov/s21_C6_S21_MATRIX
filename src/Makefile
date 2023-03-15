@@ -178,6 +178,8 @@ valgrind_full: tests_no_check.out tests_check.out
 
 clean:
 		rm -rf report
+		rm -rf report_no_check
+		rm -rf valgrind_report
 		rm -f *.o
 		rm -f *.a
 		rm -f *.oa
