@@ -8,7 +8,7 @@ RUN apk upgrade && apk add \
     musl-dev \
     bash \
     check \
-    pkg-config \
+    pkgconfig \
     dos2unix \
     && rm -rf /var/lib/apt/lists
 

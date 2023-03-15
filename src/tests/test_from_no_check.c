@@ -1754,6 +1754,1169 @@ START_TEST(mult_matrix_9_incorrect_matrix_null) {
     s21_remove_matrix(&m1);
 } END_TEST
 
+// mult_number============================================================
+// mult_number============================================================
+// mult_number============================================================
+
+START_TEST(mult_number_0) {
+    matrix_t m;
+    const double number = 2.0;
+    matrix_t actual_result;
+    s21_create_matrix(1, 1, &m);
+
+    m.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_mult_number(&m, number, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+    expected_result.matrix[0][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+
+} END_TEST
+
+START_TEST(mult_number_1) {
+    matrix_t m;
+    const double number = 0.1;
+    matrix_t actual_result;
+    s21_create_matrix(1, 1, &m);
+
+    m.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_mult_number(&m, number, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+    expected_result.matrix[0][0] = 0.123;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+
+} END_TEST
+
+START_TEST(mult_number_2) {
+    matrix_t m;
+    const double number = 0.1;
+    matrix_t actual_result;
+    s21_create_matrix(2, 2, &m);
+
+    m.matrix[0][0] = 10.5;
+    m.matrix[0][1] = 20.5;
+    m.matrix[1][0] = 30.5;
+    m.matrix[1][1] = 40.5;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_mult_number(&m, number, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 1.05;
+    expected_result.matrix[0][1] = 2.05;
+    expected_result.matrix[1][0] = 3.05;
+    expected_result.matrix[1][1] = 4.05;
+
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+
+} END_TEST
+
+START_TEST(mult_number_3) {
+    matrix_t m;
+    const double number = 0.0;
+    matrix_t actual_result;
+    s21_create_matrix(2, 2, &m);
+
+    m.matrix[0][0] = 10.5;
+    m.matrix[0][1] = 20.5;
+    m.matrix[1][0] = 30.5;
+    m.matrix[1][1] = 40.5;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_mult_number(&m, number, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+    expected_result.matrix[0][1] = 0.0;
+    expected_result.matrix[1][0] = 0.0;
+    expected_result.matrix[1][1] = 0.0;
+
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+
+} END_TEST
+
+START_TEST(mult_number_4_incorrect_matrix_set_null) {
+    matrix_t m;
+    const double number = 0.0;
+    matrix_t actual_result;
+    set_null(&m);
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_mult_number(&m, number, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+    expected_result.matrix[0][1] = 0.0;
+    expected_result.matrix[1][0] = 0.0;
+    expected_result.matrix[1][1] = 0.0;
+
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+
+} END_TEST
+
+START_TEST(mult_number_5_incorrect_matrix_null) {
+    matrix_t m;
+    const double number = 0.0;
+    matrix_t actual_result;
+    s21_create_matrix(2, 2, &m);
+
+    m.matrix[0][0] = 10.5;
+    m.matrix[0][1] = 20.5;
+    m.matrix[1][0] = 30.5;
+    m.matrix[1][1] = 40.5;
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_mult_number(&m, number, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+    expected_result.matrix[0][1] = 0.0;
+    expected_result.matrix[1][0] = 0.0;
+    expected_result.matrix[1][1] = 0.0;
+
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+
+} END_TEST
+
+START_TEST(mult_number_6_calculation_error_nan) {
+    matrix_t m;
+    const double number = NAN;
+    matrix_t actual_result;
+    s21_create_matrix(2, 2, &m);
+
+    m.matrix[0][0] = 10.5;
+    m.matrix[0][1] = 20.5;
+    m.matrix[1][0] = 30.5;
+    m.matrix[1][1] = 40.5;
+
+    // const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int expected_code = ERROR_CALCULATION_ERROR;
+    const int actual_code = s21_mult_number(&m, number, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+    expected_result.matrix[0][1] = 0.0;
+    expected_result.matrix[1][0] = 0.0;
+    expected_result.matrix[1][1] = 0.0;
+
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+
+
+    // just to cover case when removing null-pointer
+    s21_remove_matrix(NULL);
+} END_TEST
+
+// sub_matrix=============================================================
+// sub_matrix=============================================================
+// sub_matrix=============================================================
+
+START_TEST(sub_matrix_0) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 1, &m1);
+    s21_create_matrix(1, 1, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sub_matrix_1_calculation_error_different_columns) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 2, &m1);
+    s21_create_matrix(1, 1, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_CALCULATION_ERROR;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sub_matrix_2_calculation_error_different_rows_and_columns) {
+     matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 2, &m1);
+    s21_create_matrix(3, 3, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_CALCULATION_ERROR;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sub_matrix_3) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 2, &m1);
+    s21_create_matrix(1, 2, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m1.matrix[0][1] = 1.00;
+
+    m2.matrix[0][0] = 1.23;
+    m2.matrix[0][1] = 1.00;
+
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 2, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+    expected_result.matrix[0][1] = 0.0;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sub_matrix_4) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(2, 2, &m1);
+    s21_create_matrix(2, 2, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m1.matrix[0][1] = 1.00;
+    m1.matrix[1][0] = 2.23;
+    m1.matrix[1][1] = 2.00;
+
+    m2.matrix[0][0] = 1.23;
+    m2.matrix[0][1] = 1.00;
+    m2.matrix[1][0] = 2.23;
+    m2.matrix[1][1] = 2.00;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+    expected_result.matrix[0][1] = 0.0;
+    expected_result.matrix[1][0] = 0.0;
+    expected_result.matrix[1][1] = 0.0;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+
+START_TEST(sub_matrix_5) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(4, 2, &m1);
+    s21_create_matrix(4, 2, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m1.matrix[0][1] = 1.00;
+    m1.matrix[1][0] = 2.23;
+    m1.matrix[1][1] = 2.00;
+    m1.matrix[2][0] = 1.23;
+    m1.matrix[2][1] = 1.00;
+    m1.matrix[3][0] = 2.23;
+    m1.matrix[3][1] = 2.00;
+
+
+    m2.matrix[0][0] = 1.23;
+    m2.matrix[0][1] = 1.00;
+    m2.matrix[1][0] = 2.23;
+    m2.matrix[1][1] = 2.00;
+    m2.matrix[2][0] = 1.23;
+    m2.matrix[2][1] = 1.00;
+    m2.matrix[3][0] = 2.23;
+    m2.matrix[3][1] = 2.00;
+
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(4, 2, &expected_result);
+    expected_result.matrix[0][0] = 0.0;
+    expected_result.matrix[0][1] = 0.0;
+    expected_result.matrix[1][0] = 0.0;
+    expected_result.matrix[1][1] = 0.0;
+    expected_result.matrix[2][0] = 0.0;
+    expected_result.matrix[2][1] = 0.0;
+    expected_result.matrix[3][0] = 0.0;
+    expected_result.matrix[3][1] = 0.0;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sub_matrix_6) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(4, 2, &m1);
+    s21_create_matrix(4, 2, &m2);
+
+    m1.matrix[0][0] = 8.8;
+    m1.matrix[0][1] = 7.7;
+    m1.matrix[1][0] = 6.6;
+    m1.matrix[1][1] = 5.5;
+    m1.matrix[2][0] = 4.4;
+    m1.matrix[2][1] = 3.3;
+    m1.matrix[3][0] = 2.2;
+    m1.matrix[3][1] = 1.1;
+
+
+    m2.matrix[0][0] = 1.1;
+    m2.matrix[0][1] = 2.2;
+    m2.matrix[1][0] = 3.3;
+    m2.matrix[1][1] = 4.4;
+    m2.matrix[2][0] = 5.5;
+    m2.matrix[2][1] = 6.6;
+    m2.matrix[3][0] = 7.7;
+    m2.matrix[3][1] = 8.8;
+
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(4, 2, &expected_result);
+    expected_result.matrix[0][0] = 7.7;
+    expected_result.matrix[0][1] = 5.5;
+    expected_result.matrix[1][0] = 3.3;
+    expected_result.matrix[1][1] = 1.1;
+    expected_result.matrix[2][0] = -1.1;
+    expected_result.matrix[2][1] = -3.3;
+    expected_result.matrix[3][0] = -5.5;
+    expected_result.matrix[3][1] = -7.7;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sub_matrix_7_incorrect_matrix_set_null) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(4, 2, &m1);
+    set_null(&m2);
+
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(4, 2, &expected_result);
+    expected_result.matrix[0][0] = 7.7;
+    expected_result.matrix[0][1] = 5.5;
+    expected_result.matrix[1][0] = 3.3;
+    expected_result.matrix[1][1] = 1.1;
+    expected_result.matrix[2][0] = -1.1;
+    expected_result.matrix[2][1] = -3.3;
+    expected_result.matrix[3][0] = -5.5;
+    expected_result.matrix[3][1] = -7.7;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sub_matrix_8_incorrect_matrix_set_null) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    set_null(&m1);
+    s21_create_matrix(1, 1, &m2);
+
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_sub_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(4, 2, &expected_result);
+    expected_result.matrix[0][0] = 7.7;
+    expected_result.matrix[0][1] = 5.5;
+    expected_result.matrix[1][0] = 3.3;
+    expected_result.matrix[1][1] = 1.1;
+    expected_result.matrix[2][0] = -1.1;
+    expected_result.matrix[2][1] = -3.3;
+    expected_result.matrix[3][0] = -5.5;
+    expected_result.matrix[3][1] = -7.7;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+
+} END_TEST
+
+START_TEST(sub_matrix_9_incorrect_matrix_null) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+
+    s21_create_matrix(1, 1, &m1);
+    s21_create_matrix(1, 1, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_sub_matrix(&m1, &m2, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(4, 2, &expected_result);
+    expected_result.matrix[0][0] = 7.7;
+    expected_result.matrix[0][1] = 5.5;
+    expected_result.matrix[1][0] = 3.3;
+    expected_result.matrix[1][1] = 1.1;
+    expected_result.matrix[2][0] = -1.1;
+    expected_result.matrix[2][1] = -3.3;
+    expected_result.matrix[3][0] = -5.5;
+    expected_result.matrix[3][1] = -7.7;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+// sum_matrix=============================================================
+// sum_matrix=============================================================
+// sum_matrix=============================================================
+
+START_TEST(sum_matrix_0) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 1, &m1);
+    s21_create_matrix(1, 1, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+    expected_result.matrix[0][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sum_matrix_1_calculation_error_different_columns) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 2, &m1);
+    s21_create_matrix(1, 1, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_CALCULATION_ERROR;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sum_matrix_2_calculation_error_different_rows_and_columns) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 2, &m1);
+    s21_create_matrix(3, 3, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m2.matrix[0][0] = 1.23;
+
+    const int expected_code = ERROR_CALCULATION_ERROR;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sum_matrix_3) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(1, 2, &m1);
+    s21_create_matrix(1, 2, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m1.matrix[0][1] = 1.00;
+
+    m2.matrix[0][0] = 1.23;
+    m2.matrix[0][1] = 1.00;
+
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 2, &expected_result);
+    expected_result.matrix[0][0] = 2.46;
+    expected_result.matrix[0][1] = 2.00;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+
+START_TEST(sum_matrix_4) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(2, 2, &m1);
+    s21_create_matrix(2, 2, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m1.matrix[0][1] = 1.00;
+    m1.matrix[1][0] = 2.23;
+    m1.matrix[1][1] = 2.00;
+
+    m2.matrix[0][0] = 1.23;
+    m2.matrix[0][1] = 1.00;
+    m2.matrix[1][0] = 2.23;
+    m2.matrix[1][1] = 2.00;
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 2.46;
+    expected_result.matrix[0][1] = 2.00;
+    expected_result.matrix[1][0] = 4.46;
+    expected_result.matrix[1][1] = 4.00;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sum_matrix_5) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(4, 2, &m1);
+    s21_create_matrix(4, 2, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m1.matrix[0][1] = 1.00;
+    m1.matrix[1][0] = 2.23;
+    m1.matrix[1][1] = 2.00;
+    m1.matrix[2][0] = 1.23;
+    m1.matrix[2][1] = 1.00;
+    m1.matrix[3][0] = 2.23;
+    m1.matrix[3][1] = 2.00;
+
+
+    m2.matrix[0][0] = 1.23;
+    m2.matrix[0][1] = 1.00;
+    m2.matrix[1][0] = 2.23;
+    m2.matrix[1][1] = 2.00;
+    m2.matrix[2][0] = 1.23;
+    m2.matrix[2][1] = 1.00;
+    m2.matrix[3][0] = 2.23;
+    m2.matrix[3][1] = 2.00;
+
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(4, 2, &expected_result);
+    expected_result.matrix[0][0] = 2.46;
+    expected_result.matrix[0][1] = 2.00;
+    expected_result.matrix[1][0] = 4.46;
+    expected_result.matrix[1][1] = 4.00;
+    expected_result.matrix[2][0] = 2.46;
+    expected_result.matrix[2][1] = 2.00;
+    expected_result.matrix[3][0] = 4.46;
+    expected_result.matrix[3][1] = 4.00;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sum_matrix_6_incorrect_matrix_set_null) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(4, 2, &m1);
+    set_null(&m2);
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    set_null(&expected_result);
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+START_TEST(sum_matrix_7_incorrect_matrix_set_null) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(4, 2, &m2);
+    set_null(&m1);
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    set_null(&expected_result);
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+
+} END_TEST
+
+START_TEST(sum_matrix_8_incorrect_matrix_set_null) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    set_null(&m1);
+    set_null(&m2);
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_sum_matrix(&m1, &m2, &actual_result);
+
+    matrix_t expected_result;
+    set_null(&expected_result);
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+
+} END_TEST
+
+START_TEST(sum_matrix_9_incorrect_matrix_null) {
+    matrix_t m1;
+    matrix_t m2;
+    matrix_t actual_result;
+    s21_create_matrix(2, 2, &m1);
+    s21_create_matrix(2, 2, &m2);
+
+    m1.matrix[0][0] = 1.23;
+    m1.matrix[0][1] = 1.00;
+    m1.matrix[1][0] = 2.23;
+    m1.matrix[1][1] = 2.00;
+
+    m2.matrix[0][0] = 1.23;
+    m2.matrix[0][1] = 1.00;
+    m2.matrix[1][0] = 2.23;
+    m2.matrix[1][1] = 2.00;
+
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_sum_matrix(&m1, &m2, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 2, &expected_result);
+    expected_result.matrix[0][0] = 2.46;
+    expected_result.matrix[0][1] = 2.00;
+    expected_result.matrix[1][0] = 4.46;
+    expected_result.matrix[1][1] = 4.00;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m2);
+    s21_remove_matrix(&m1);
+
+} END_TEST
+
+// transpose==============================================================
+// transpose==============================================================
+// transpose==============================================================
+
+START_TEST(transpose_0) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    s21_create_matrix(1, 1, &m);
+    m.matrix[0][0] = 1.23;
+    
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_transpose(&m, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(1, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+} END_TEST
+
+START_TEST(transpose_1) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    s21_create_matrix(1, 2, &m);
+
+    m.matrix[0][0] = 1.23;
+    m.matrix[0][1] = 2.46;
+    
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_transpose(&m, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+    expected_result.matrix[1][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+} END_TEST
+
+START_TEST(transpose_2) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    s21_create_matrix(2, 3, &m);
+
+    m.matrix[0][0] = 1.0;
+    m.matrix[0][1] = 2.0;
+    m.matrix[0][2] = 3.0;
+    m.matrix[1][0] = 4.0;
+    m.matrix[1][1] = 5.0;
+    m.matrix[1][2] = 6.0;
+
+
+    const int expected_code = ERROR_OK;
+    const int actual_code = s21_transpose(&m, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(3, 2, &expected_result);
+    expected_result.matrix[0][0] = 1.0;
+    expected_result.matrix[0][1] = 4.0;
+    expected_result.matrix[1][0] = 2.0;
+    expected_result.matrix[1][1] = 5.0;
+    expected_result.matrix[2][0] = 3.0;
+    expected_result.matrix[2][1] = 6.0;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+} END_TEST
+
+START_TEST(transpose_3_incorrect_matrix_null) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    s21_create_matrix(1, 2, &m);
+
+    m.matrix[0][0] = 1.23;
+    m.matrix[0][1] = 2.46;
+    
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_transpose(&m, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+    expected_result.matrix[1][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+    s21_remove_matrix(&m);
+} END_TEST
+
+START_TEST(transpose_4_incorrect_matrix_set_null) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    set_null(&m);
+    
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_transpose(&m, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+    expected_result.matrix[1][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+} END_TEST
+
+START_TEST(transpose_5_incorrect_matrix_negative_columns) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    set_null(&m);
+    m.columns = -5;
+    
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_transpose(&m, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+    expected_result.matrix[1][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+} END_TEST
+
+START_TEST(transpose_6_incorrect_matrix_negative_rows) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    set_null(&m);
+    m.rows = -5;
+    
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_transpose(&m, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+    expected_result.matrix[1][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+} END_TEST
+
+START_TEST(transpose_7_incorrect_matrix_negative_rows_and_columns) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    m.rows = -5;
+    m.columns = -15;
+    
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_transpose(&m, NULL);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+    expected_result.matrix[1][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+} END_TEST
+
+START_TEST(transpose_8_incorrect_matrix_negative_rows_and_columns) {
+    matrix_t m;
+    matrix_t actual_result;
+
+    m.matrix = NULL;
+    
+    
+    const int expected_code = ERROR_INCORRECT_MATRIX;
+    const int actual_code = s21_transpose(&m, &actual_result);
+
+    matrix_t expected_result;
+    s21_create_matrix(2, 1, &expected_result);
+    expected_result.matrix[0][0] = 1.23;
+    expected_result.matrix[1][0] = 2.46;
+
+    ck_assert_int_eq(actual_code, expected_code);
+    if (actual_code == ERROR_OK)
+        ck_assert_int_eq(SUCCESS, s21_eq_matrix(&actual_result, &expected_result));
+
+    s21_remove_matrix(&expected_result);
+    if (actual_code == ERROR_OK)
+        s21_remove_matrix(&actual_result);
+} END_TEST
 
 
 
@@ -1761,63 +2924,93 @@ Suite *from_no_check_suite(void) {
     Suite *s1 = suite_create("Ch");
     TCase *tc1_1 = tcase_create("Core");
 
-    // tcase_add_test(tc1_1, calc_complements_0);
-    // tcase_add_test(tc1_1, calc_complements_1_calculation_error_not_square);
-    // tcase_add_test(tc1_1, calc_complements_2);
-    // tcase_add_test(tc1_1, calc_complements_3_incorrect_matrix_null);
-    // tcase_add_test(tc1_1, calc_complements_4_incorrect_matrix_null);
-    
-    // tcase_add_test(tc1_1, create_matrix_0_incorrect_matrix_negative_row);
-    // tcase_add_test(tc1_1, create_matrix_1_incorrect_matrix_negative_column);
-    // tcase_add_test(tc1_1, create_matrix_2_incorrect_matrix_negative_both);
-    // tcase_add_test(tc1_1, create_matrix_3_incorrect_matrix_negative_and_null);
-    // tcase_add_test(tc1_1, create_matrix_4_incorrect_matrix_null);
+
+    // calc_complements===================================================================
+    // calc_complements===================================================================
+
+
+    tcase_add_test(tc1_1, calc_complements_0);
+    tcase_add_test(tc1_1, calc_complements_1_calculation_error_not_square);
+    tcase_add_test(tc1_1, calc_complements_2);
+    tcase_add_test(tc1_1, calc_complements_3_incorrect_matrix_null);
+    tcase_add_test(tc1_1, calc_complements_4_incorrect_matrix_null);
+
+
+    // create_matrix======================================================================
+    // create_matrix======================================================================
+
+
+    tcase_add_test(tc1_1, create_matrix_0_incorrect_matrix_negative_row);
+    tcase_add_test(tc1_1, create_matrix_1_incorrect_matrix_negative_column);
+    tcase_add_test(tc1_1, create_matrix_2_incorrect_matrix_negative_both);
+    tcase_add_test(tc1_1, create_matrix_3_incorrect_matrix_negative_and_null);
+    tcase_add_test(tc1_1, create_matrix_4_incorrect_matrix_null);
     // tcase_add_test(tc1_1, create_matrix_5_incorrect_matrix_too_large);
 
-    // tcase_add_test(tc1_1, determinant_0);
-    // tcase_add_test(tc1_1, determinant_1);
-    // tcase_add_test(tc1_1, determinant_2);
-    // tcase_add_test(tc1_1, determinant_3);
-    // tcase_add_test(tc1_1, determinant_4);
-    // tcase_add_test(tc1_1, determinant_5);
-    // tcase_add_test(tc1_1, determinant_6);
-    // tcase_add_test(tc1_1, determinant_7_calculation_error_not_square);
-    // tcase_add_test(tc1_1, determinant_8_incorrect_matrix_null);
-    // tcase_add_test(tc1_1, determinant_9_incorrect_matrix_null);
-    // tcase_add_test(tc1_1, determinant_10_incorrect_matrix_null);
 
-    // tcase_add_test(tc1_1, eq_matrix_0);
-    // tcase_add_test(tc1_1, eq_matrix_1);
-    // tcase_add_test(tc1_1, eq_matrix_2);
-    // tcase_add_test(tc1_1, eq_matrix_3);
-    // tcase_add_test(tc1_1, eq_matrix_4);
-    // tcase_add_test(tc1_1, eq_matrix_5);
-    // tcase_add_test(tc1_1, eq_matrix_6);
-    // tcase_add_test(tc1_1, eq_matrix_7);
-    // tcase_add_test(tc1_1, eq_matrix_8);
-    // tcase_add_test(tc1_1, eq_matrix_9);
-    // tcase_add_test(tc1_1, eq_matrix_10);
-    // tcase_add_test(tc1_1, eq_matrix_11_set_null);
-    // tcase_add_test(tc1_1, eq_matrix_12_set_null);
-    // tcase_add_test(tc1_1, eq_matrix_13_set_null);
-    // tcase_add_test(tc1_1, eq_matrix_14_null);
-    // tcase_add_test(tc1_1, eq_matrix_15_null);
-    // tcase_add_test(tc1_1, eq_matrix_16_null);
+    // determinant========================================================================
+    // determinant========================================================================
 
-    // tcase_add_test(tc1_1, inverse_matrix_0);
-    // tcase_add_test(tc1_1, inverse_matrix_1);
-    // tcase_add_test(tc1_1, inverse_matrix_2);
-    // tcase_add_test(tc1_1, inverse_matrix_3);
-    // tcase_add_test(tc1_1, inverse_matrix_4);
-    // tcase_add_test(tc1_1, inverse_matrix_5);
-    // tcase_add_test(tc1_1, inverse_matrix_6);
-    // tcase_add_test(tc1_1, inverse_matrix_7);
-    // tcase_add_test(tc1_1, inverse_matrix_8_calculation_error_zero_determinant);
-    // tcase_add_test(tc1_1, inverse_matrix_9_incorrect_matrix_null);
-    // tcase_add_test(tc1_1, inverse_matrix_10_incorrect_matrix_null);
-    // tcase_add_test(tc1_1, inverse_matrix_11_calculation_error_not_square);
-    // tcase_add_test(tc1_1, inverse_matrix_12_1x1_matrix);
-    
+
+    tcase_add_test(tc1_1, determinant_0);
+    tcase_add_test(tc1_1, determinant_1);
+    tcase_add_test(tc1_1, determinant_2);
+    tcase_add_test(tc1_1, determinant_3);
+    tcase_add_test(tc1_1, determinant_4);
+    tcase_add_test(tc1_1, determinant_5);
+    tcase_add_test(tc1_1, determinant_6);
+    tcase_add_test(tc1_1, determinant_7_calculation_error_not_square);
+    tcase_add_test(tc1_1, determinant_8_incorrect_matrix_null);
+    tcase_add_test(tc1_1, determinant_9_incorrect_matrix_null);
+    tcase_add_test(tc1_1, determinant_10_incorrect_matrix_null);
+
+
+    // eq_matrix==========================================================================
+    // eq_matrix==========================================================================
+
+
+    tcase_add_test(tc1_1, eq_matrix_0);
+    tcase_add_test(tc1_1, eq_matrix_1);
+    tcase_add_test(tc1_1, eq_matrix_2);
+    tcase_add_test(tc1_1, eq_matrix_3);
+    tcase_add_test(tc1_1, eq_matrix_4);
+    tcase_add_test(tc1_1, eq_matrix_5);
+    tcase_add_test(tc1_1, eq_matrix_6);
+    tcase_add_test(tc1_1, eq_matrix_7);
+    tcase_add_test(tc1_1, eq_matrix_8);
+    tcase_add_test(tc1_1, eq_matrix_9);
+    tcase_add_test(tc1_1, eq_matrix_10);
+    tcase_add_test(tc1_1, eq_matrix_11_set_null);
+    tcase_add_test(tc1_1, eq_matrix_12_set_null);
+    tcase_add_test(tc1_1, eq_matrix_13_set_null);
+    tcase_add_test(tc1_1, eq_matrix_14_null);
+    tcase_add_test(tc1_1, eq_matrix_15_null);
+    tcase_add_test(tc1_1, eq_matrix_16_null);
+
+
+    // inverse_matrix=====================================================================
+    // inverse_matrix=====================================================================
+
+
+    tcase_add_test(tc1_1, inverse_matrix_0);
+    tcase_add_test(tc1_1, inverse_matrix_1);
+    tcase_add_test(tc1_1, inverse_matrix_2);
+    tcase_add_test(tc1_1, inverse_matrix_3);
+    tcase_add_test(tc1_1, inverse_matrix_4);
+    tcase_add_test(tc1_1, inverse_matrix_5);
+    tcase_add_test(tc1_1, inverse_matrix_6);
+    tcase_add_test(tc1_1, inverse_matrix_7);
+    tcase_add_test(tc1_1, inverse_matrix_8_calculation_error_zero_determinant);
+    tcase_add_test(tc1_1, inverse_matrix_9_incorrect_matrix_null);
+    tcase_add_test(tc1_1, inverse_matrix_10_incorrect_matrix_null);
+    tcase_add_test(tc1_1, inverse_matrix_11_calculation_error_not_square);
+    tcase_add_test(tc1_1, inverse_matrix_12_1x1_matrix);
+
+
+    // mult_matrix========================================================================
+    // mult_matrix========================================================================
+
+
     tcase_add_test(tc1_1, mult_matrix_0);
     tcase_add_test(tc1_1, mult_matrix_1);
     tcase_add_test(tc1_1, mult_matrix_2_calculation_error_different_columns);
@@ -1828,6 +3021,68 @@ Suite *from_no_check_suite(void) {
     tcase_add_test(tc1_1, mult_matrix_7_incorrect_matrix_set_null);
     tcase_add_test(tc1_1, mult_matrix_8_incorrect_matrix_null);
     tcase_add_test(tc1_1, mult_matrix_9_incorrect_matrix_null);
+
+
+    // mult_number========================================================================
+    // mult_number========================================================================
+
+
+    tcase_add_test(tc1_1, mult_number_0);
+    tcase_add_test(tc1_1, mult_number_1);
+    tcase_add_test(tc1_1, mult_number_2);
+    tcase_add_test(tc1_1, mult_number_3);
+    tcase_add_test(tc1_1, mult_number_4_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, mult_number_5_incorrect_matrix_null);
+    tcase_add_test(tc1_1, mult_number_6_calculation_error_nan);
+    
+
+    // sub_matrix=========================================================================
+    // sub_matrix=========================================================================
+
+
+    tcase_add_test(tc1_1, sub_matrix_0);
+    tcase_add_test(tc1_1, sub_matrix_1_calculation_error_different_columns);
+    tcase_add_test(tc1_1, sub_matrix_2_calculation_error_different_rows_and_columns);
+    tcase_add_test(tc1_1, sub_matrix_3);
+    tcase_add_test(tc1_1, sub_matrix_4);
+    tcase_add_test(tc1_1, sub_matrix_5);
+    tcase_add_test(tc1_1, sub_matrix_6);
+    tcase_add_test(tc1_1, sub_matrix_7_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, sub_matrix_8_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, sub_matrix_9_incorrect_matrix_null);
+    
+
+    // sum_matrix=========================================================================
+    // sum_matrix=========================================================================
+
+
+    tcase_add_test(tc1_1, sum_matrix_0);
+    tcase_add_test(tc1_1, sum_matrix_1_calculation_error_different_columns);
+    tcase_add_test(tc1_1, sum_matrix_2_calculation_error_different_rows_and_columns);
+    tcase_add_test(tc1_1, sum_matrix_3);
+    tcase_add_test(tc1_1, sum_matrix_4);
+    tcase_add_test(tc1_1, sum_matrix_5);
+    tcase_add_test(tc1_1, sum_matrix_6_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, sum_matrix_7_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, sum_matrix_8_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, sum_matrix_9_incorrect_matrix_null);
+    
+    
+    // transpose==========================================================================
+    // transpose==========================================================================
+    
+
+    tcase_add_test(tc1_1, transpose_0);
+    tcase_add_test(tc1_1, transpose_1);
+    tcase_add_test(tc1_1, transpose_2);
+    tcase_add_test(tc1_1, transpose_3_incorrect_matrix_null);
+    tcase_add_test(tc1_1, transpose_4_incorrect_matrix_set_null);
+    tcase_add_test(tc1_1, transpose_5_incorrect_matrix_negative_columns);
+    tcase_add_test(tc1_1, transpose_6_incorrect_matrix_negative_rows);
+    tcase_add_test(tc1_1, transpose_7_incorrect_matrix_negative_rows_and_columns);
+    tcase_add_test(tc1_1, transpose_8_incorrect_matrix_negative_rows_and_columns);
+
+
 
     suite_add_tcase(s1, tc1_1);
     return s1;

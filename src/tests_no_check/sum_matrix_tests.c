@@ -267,7 +267,7 @@ void sum_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
     }
     ++test_number;
 
-    {//6========================================
+    {//7========================================
         matrix_t m1;
         matrix_t m2;
         matrix_t actual_result;
@@ -291,7 +291,7 @@ void sum_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
     }
     ++test_number;
 
-    {//7========================================
+    {//8========================================
         matrix_t m1;
         matrix_t m2;
         matrix_t actual_result;
@@ -315,7 +315,7 @@ void sum_matrix_tests(int algorithm(const matrix_t*, const matrix_t*, matrix_t*)
     ++test_number;
 
 
-    {//8========================================
+    {//9========================================
         matrix_t m1;
         matrix_t m2;
         matrix_t actual_result;
