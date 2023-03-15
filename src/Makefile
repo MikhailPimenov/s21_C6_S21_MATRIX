@@ -176,8 +176,26 @@ valgrind_full: tests_no_check.out tests_check.out
 		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_no_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
 		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
 
+check_style:
+		clang-format -n *.c
+		clang-format -n *.h
+		clang-format -n tests/*.c
+		clang-format -n tests/*.h
+		clang-format -n tests_no_check/*.c
+		clang-format -n tests_no_check/*.h
+
+style:
+		clang-format -i *.c
+		clang-format -i *.h
+		clang-format -i tests/*.c
+		clang-format -i tests/*.h
+		clang-format -i tests_no_check/*.c
+		clang-format -i tests_no_check/*.h
+
 clean:
 		rm -rf report
+		rm -rf report_no_check
+		rm -rf valgrind_report
 		rm -f *.o
 		rm -f *.a
 		rm -f *.oa
