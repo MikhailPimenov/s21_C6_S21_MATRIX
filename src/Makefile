@@ -18,7 +18,7 @@ REPORT_DIRECTORY=report
 REPORT_DIRECTORY_NO_CHECK=report_no_check
 VALGRIND_REPORT_DIRECTORY=valgrind_report
 
-all: tests_no_check gcov_report
+all: test s21_matrix.a gcov_report
 
 
 gcov_report_no_check: tests_no_check	
@@ -95,6 +95,40 @@ s21_common.o: s21_common.c s21_common.h
 		$(CC) -c $(STRICT_CFLAGS) $< -o $@ $(GCOVR_CFLAGS)
 
 
+s21_matrix.a: s21_create_matrix.oa s21_remove_matrix.oa s21_eq_matrix.oa s21_sum_matrix.oa s21_sub_matrix.oa s21_mult_number.oa s21_mult_matrix.oa s21_transpose.oa s21_determinant.oa s21_calc_complements.oa s21_inverse_matrix.oa s21_common.oa 
+		ar rcs $@ $^
+
+s21_create_matrix.oa: s21_create_matrix.c s21_matrix.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_remove_matrix.oa: s21_remove_matrix.c s21_matrix.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_eq_matrix.oa: s21_eq_matrix.c s21_matrix.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_sum_matrix.oa: s21_sum_matrix.c s21_matrix.h s21_common.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_sub_matrix.oa: s21_sub_matrix.c s21_matrix.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_mult_number.oa: s21_mult_number.c s21_matrix.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_mult_matrix.oa: s21_mult_matrix.c s21_matrix.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_transpose.oa: s21_transpose.c s21_matrix.h s21_common.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_determinant.oa: s21_determinant.c s21_matrix.h s21_common.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@ 
+s21_calc_complements.oa: s21_calc_complements.c s21_matrix.h s21_common.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+s21_inverse_matrix.oa: s21_inverse_matrix.c s21_matrix.h s21_common.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+
+s21_common.oa: s21_common.c s21_common.h
+		$(CC) -c $(STRICT_CFLAGS) $< -o $@
+
+
+
+
+
+
 
 
 create_matrix_tests.o: tests_no_check/create_matrix_tests.c tests_no_check/all_tests_without_check.h s21_common.h
@@ -145,6 +179,8 @@ valgrind_full: tests_no_check.out tests_check.out
 clean:
 		rm -rf report
 		rm -f *.o
+		rm -f *.a
+		rm -f *.oa
 		rm -f *.gcda
 		rm -f *.gcno
 		rm -f tests/*.o

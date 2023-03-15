@@ -163,5 +163,21 @@ void create_matrix_tests(int algorithm(int, int, matrix_t*), const char* functio
             free(m.matrix);
     }
     ++test_number;
+
+    //10=============================================
+    printf("test #%d:\t", test_number);
+    {
+        const int rows = 4;                              
+        const int columns = 3;                         
+
+        const int expected_code = ERROR_INCORRECT_MATRIX;           
+        const int actual_code = algorithm(rows, columns, NULL);
+        if (actual_code == expected_code)
+            printf("ok\n");
+        else
+            printf("FAILED\n");
+        
+    }
+    ++test_number;
         
 }

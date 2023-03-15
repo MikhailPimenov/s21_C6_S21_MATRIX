@@ -1978,6 +1978,8 @@ START_TEST(mult_number_6_calculation_error_nan) {
 
     // just to cover case when removing null-pointer
     s21_remove_matrix(NULL);
+    // just to cover case when creating from null-pointer
+    s21_create_matrix(4, 3, NULL);
 } END_TEST
 
 // sub_matrix=============================================================
