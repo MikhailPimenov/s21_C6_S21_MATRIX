@@ -6,8 +6,8 @@
 #include "../s21_matrix.h"
 #include "print_matrix.h"
 
-void create_matrix_tests(int algorithm(int, int, matrix_t*),
-                         const char* function_name) {
+void create_matrix_tests(int algorithm(int, int, matrix_t *),
+                         const char *function_name) {
   printf("Testing %s:\n", function_name);
   int test_number = 0;
 

@@ -177,21 +177,62 @@ valgrind_full: tests_no_check.out tests_check.out
 		-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./tests_check.out > $(VALGRIND_REPORT_DIRECTORY)/valgrind_report.txt
 
 check_style:
-		clang-format -n *.c
-		clang-format -n *.h
-		clang-format -n tests/*.c
-		clang-format -n tests/*.h
-		clang-format -n tests_no_check/*.c
-		clang-format -n tests_no_check/*.h
+		clang-format --style=Google -n *.c
+		clang-format --style=Google -n *.h
+		clang-format --style=Google -n tests/*.c
+		clang-format --style=Google -n tests/*.h
+		clang-format --style=Google -n tests_no_check/*.c
+		clang-format --style=Google -n tests_no_check/*.h
 
-style:
-		clang-format -i *.c
-		clang-format -i *.h
-		clang-format -i tests/*.c
-		clang-format -i tests/*.h
-		clang-format -i tests_no_check/*.c
-		clang-format -i tests_no_check/*.h
+style: style_google
 
+style_google:
+		clang-format --style=Google -i *.c
+		clang-format --style=Google -i *.h
+		clang-format --style=Google -i tests/*.c
+		clang-format --style=Google -i tests/*.h
+		clang-format --style=Google -i tests_no_check/*.c
+		clang-format --style=Google -i tests_no_check/*.h
+
+style_microsoft:
+		clang-format --style=Microsoft -i *.c
+		clang-format --style=Microsoft -i *.h
+		clang-format --style=Microsoft -i tests/*.c
+		clang-format --style=Microsoft -i tests/*.h
+		clang-format --style=Microsoft -i tests_no_check/*.c
+		clang-format --style=Microsoft -i tests_no_check/*.h
+
+style_llvm:
+		clang-format --style=LLVM -i *.c
+		clang-format --style=LLVM -i *.h
+		clang-format --style=LLVM -i tests/*.c
+		clang-format --style=LLVM -i tests/*.h
+		clang-format --style=LLVM -i tests_no_check/*.c
+		clang-format --style=LLVM -i tests_no_check/*.h
+
+style_chromium:
+		clang-format --style=Chromium -i *.c
+		clang-format --style=Chromium -i *.h
+		clang-format --style=Chromium -i tests/*.c
+		clang-format --style=Chromium -i tests/*.h
+		clang-format --style=Chromium -i tests_no_check/*.c
+		clang-format --style=Chromium -i tests_no_check/*.h
+
+style_mozilla:
+		clang-format --style=Mozilla -i *.c
+		clang-format --style=Mozilla -i *.h
+		clang-format --style=Mozilla -i tests/*.c
+		clang-format --style=Mozilla -i tests/*.h
+		clang-format --style=Mozilla -i tests_no_check/*.c
+		clang-format --style=Mozilla -i tests_no_check/*.h
+
+style_WebKit:
+		clang-format --style=WebKit -i *.c
+		clang-format --style=WebKit -i *.h
+		clang-format --style=WebKit -i tests/*.c
+		clang-format --style=WebKit -i tests/*.h
+		clang-format --style=WebKit -i tests_no_check/*.c
+		clang-format --style=WebKit -i tests_no_check/*.h
 
 clean:
 		rm -rf report
