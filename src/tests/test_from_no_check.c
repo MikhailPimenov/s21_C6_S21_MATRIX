@@ -2860,6 +2860,7 @@ START_TEST(transpose_7_incorrect_matrix_negative_rows_and_columns) {
   matrix_t m;
   matrix_t actual_result;
 
+  set_null(&m);
   m.rows = -5;
   m.columns = -15;
 
@@ -2884,6 +2885,7 @@ START_TEST(transpose_8_incorrect_matrix_negative_rows_and_columns) {
   matrix_t m;
   matrix_t actual_result;
 
+  set_null(&m);
   m.matrix = NULL;
 
   const int expected_code = ERROR_INCORRECT_MATRIX;

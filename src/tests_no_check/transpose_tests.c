@@ -185,6 +185,7 @@ void transpose_tests(int algorithm(const matrix_t *, matrix_t *),
     matrix_t m;
     matrix_t actual_result;
 
+    set_null(&m);
     m.columns = -5;
 
     const int expected_code = ERROR_INCORRECT_MATRIX;
@@ -213,6 +214,7 @@ void transpose_tests(int algorithm(const matrix_t *, matrix_t *),
     matrix_t m;
     matrix_t actual_result;
 
+    set_null(&m);
     m.rows = -5;
 
     const int expected_code = ERROR_INCORRECT_MATRIX;
@@ -241,6 +243,7 @@ void transpose_tests(int algorithm(const matrix_t *, matrix_t *),
     matrix_t m;
     matrix_t actual_result;
 
+    set_null(&m);
     m.rows = -5;
     m.columns = -15;
 
@@ -270,6 +273,7 @@ void transpose_tests(int algorithm(const matrix_t *, matrix_t *),
     matrix_t m;
     matrix_t actual_result;
 
+    set_null(&m);
     m.matrix = NULL;
 
     const int expected_code = ERROR_INCORRECT_MATRIX;
